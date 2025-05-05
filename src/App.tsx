@@ -1,4 +1,3 @@
-import React from "react";
 import ProfileLayout from "./components/ProfileLayout";
 
 function App() {
