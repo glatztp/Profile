@@ -161,7 +161,7 @@ export function Hero() {
             whileHover={{ scale: 1.2, y: -3 }}
             className="p-3 rounded-full bg-slate-800/50 text-slate-400 hover:text-cyan-400 hover:bg-slate-700/50 transition-all duration-300"
           >
-            <Github size={24} />
+            <GithubLogo size={24} />
           </motion.a>
           
           <motion.a
