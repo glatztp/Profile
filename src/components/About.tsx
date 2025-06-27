@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Code, Rocket, Heart, Coffee } from 'phosphor-react';
+import { Code, Rocket, Heart, Coffee, PaintBrush, Laptop, BookOpen } from 'phosphor-react';
 
 const stats = [
   { number: '50+', label: 'Projects Completed', icon: Code },
@@ -13,22 +13,22 @@ const values = [
   {
     title: 'Innovation First',
     description: 'Always exploring cutting-edge technologies and creative solutions to deliver exceptional results.',
-    icon: '🚀',
+    icon: <Rocket size={32} weight="fill" />,
   },
   {
     title: 'User-Centric Design',
     description: 'Every interface I create is designed with the user experience as the top priority.',
-    icon: '🎨',
+    icon: <PaintBrush size={32} weight="fill" />,
   },
   {
     title: 'Clean Code',
     description: 'Writing maintainable, scalable, and well-documented code that stands the test of time.',
-    icon: '💻',
+    icon: <Laptop size={32} weight="fill" />,
   },
   {
     title: 'Continuous Learning',
     description: 'Staying ahead of the curve by constantly learning new technologies and best practices.',
-    icon: '📚',
+    icon: <BookOpen size={32} weight="fill" />,
   },
 ];
 

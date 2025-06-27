@@ -1,29 +1,8 @@
-import { useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, Download, GithubLogo, LinkedinLogo } from 'phosphor-react';
 
 export function Hero() {
-  const controls = useAnimation();
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    function onScroll() {
-      setScrollY(window.scrollY);
-    }
-    
-    function onMouseMove(e: MouseEvent) {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    }
-    
-    window.addEventListener('scroll', onScroll);
-    window.addEventListener('mousemove', onMouseMove);
-    
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('mousemove', onMouseMove);
-    };
-  }, []);
 
   const particles = Array.from({ length: 50 }, (_, i) => ({
     id: i,
@@ -42,9 +21,7 @@ export function Hero() {
       <div className="absolute inset-0">
         <div 
           className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-slate-900/40 to-emerald-900/20"
-          style={{
-            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
-          }}
+          
         />
         
         {/* Hero Background Image */}
@@ -52,7 +29,6 @@ export function Hero() {
           className="absolute inset-0 bg-cover bg-center opacity-10"
           style={{
             backgroundImage: 'url(https://images.unsplash.com/photo-1488590528505-98d2b5aba04b)',
-            transform: `translateY(${scrollY * 0.5}px) scale(1.1)`,
           }}
         />
 
@@ -61,12 +37,7 @@ export function Hero() {
           <motion.div
             key={particle.id}
             className="absolute bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full opacity-30"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-            }}
+            
             animate={{
               y: [-20, 20, -20],
               x: [-10, 10, -10],
@@ -181,7 +152,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2"
       >
         <div className="flex flex-col items-center gap-2 text-slate-400">
           <span className="text-sm">Scroll to explore</span>

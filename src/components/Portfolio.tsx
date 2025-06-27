@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { ExternalLink, GithubLogo, Eye } from 'phosphor-react';
+import { GithubLogo, Eye, Link } from 'phosphor-react';
 
 const projects = [
   {
@@ -75,7 +75,6 @@ const categories = ['All', 'Featured', 'Full-Stack', 'Frontend', 'Mobile', 'AI/M
 
 export function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   const filteredProjects = projects.filter(project => {
     if (activeCategory === 'All') return true;
@@ -139,8 +138,7 @@ export function Portfolio() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
-              onHoverStart={() => setHoveredProject(project.id)}
-              onHoverEnd={() => setHoveredProject(null)}
+           
               className="group relative"
             >
               <div className="relative overflow-hidden rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 group-hover:border-cyan-500/50 transition-all duration-500">
@@ -222,7 +220,7 @@ export function Portfolio() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
                     >
-                      <ExternalLink size={16} />
+                      <Link size={16} />
                       Live Demo
                     </a>
                     <a
@@ -262,7 +260,7 @@ export function Portfolio() {
             className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
           >
             Let's Work Together
-            <ExternalLink size={20} />
+            <Link size={20} />
           </motion.a>
         </motion.div>
       </div>

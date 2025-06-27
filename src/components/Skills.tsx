@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
+import { Code, GearSix, PaintBrush } from 'phosphor-react';
 import { useState } from 'react';
 
 const skillCategories = [
   {
     title: 'Frontend',
-    icon: '🎨',
+    icon: <PaintBrush size={32} weight="fill" />,
     skills: [
       { name: 'React', level: 95, color: 'from-cyan-400 to-blue-500' },
       { name: 'TypeScript', level: 90, color: 'from-blue-400 to-indigo-500' },
@@ -15,7 +16,8 @@ const skillCategories = [
   },
   {
     title: 'Backend',
-    icon: '⚙️',
+    icon: <GearSix size={32} weight="fill" />,
+
     skills: [
       { name: 'Node.js', level: 87, color: 'from-green-400 to-emerald-500' },
       { name: 'Python', level: 82, color: 'from-yellow-400 to-orange-500' },
@@ -26,7 +28,7 @@ const skillCategories = [
   },
   {
     title: 'Tools & Others',
-    icon: '🛠️',
+    icon: <Code size={32} weight="fill" />,
     skills: [
       { name: 'Git', level: 90, color: 'from-orange-400 to-red-500' },
       { name: 'Docker', level: 75, color: 'from-blue-500 to-cyan-500' },
@@ -76,11 +78,10 @@ export function Skills() {
               <button
                 key={index}
                 onClick={() => setActiveCategory(index)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  activeCategory === index
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${activeCategory === index
                     ? 'bg-gradient-to-r from-cyan-500 to-emerald-500 text-white shadow-lg'
                     : 'text-slate-400 hover:text-cyan-400'
-                }`}
+                  }`}
               >
                 <span className="mr-2">{category.icon}</span>
                 {category.title}
@@ -103,7 +104,7 @@ export function Skills() {
               <h3 className="text-2xl font-bold text-white mb-8 text-center">
                 {skillCategories[activeCategory].title} Skills
               </h3>
-              
+
               <div className="grid gap-6">
                 {skillCategories[activeCategory].skills.map((skill, index) => (
                   <motion.div
@@ -117,7 +118,7 @@ export function Skills() {
                       <span className="text-white font-medium">{skill.name}</span>
                       <span className="text-cyan-400 font-bold">{skill.level}%</span>
                     </div>
-                    
+
                     <div className="relative h-3 bg-slate-700 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
@@ -148,7 +149,7 @@ export function Skills() {
               Additional Technologies
             </span>
           </h3>
-          
+
           <div className="flex flex-wrap justify-center gap-4">
             {['HTML5', 'CSS3', 'JavaScript', 'Vue.js', 'Sass', 'GraphQL', 'Redis', 'Nginx', 'Linux', 'Jest', 'Cypress', 'Webpack'].map((tech, index) => (
               <motion.div

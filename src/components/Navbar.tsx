@@ -17,14 +17,14 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  
+
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    
+
     window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
@@ -40,22 +40,21 @@ export function Navbar() {
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    }, 100); 
+    }, 100);
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'backdrop-blur-xl bg-slate-900/80 border-b border-cyan-500/20 shadow-lg shadow-cyan-500/10' 
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+        ? 'backdrop-blur-xl bg-slate-900/80 border-b border-cyan-500/20 shadow-lg shadow-cyan-500/10'
         : 'backdrop-blur-sm'
-    }`}>
+      }`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 font-bold text-2xl cursor-default select-none"
         >
-          Gabriel.dev
+          Gabriel.glatz
         </motion.div>
 
         <div className="hidden md:flex gap-8">

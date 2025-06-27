@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Star, Quote } from 'phosphor-react';
+import { Check, Star,  } from 'phosphor-react';
 
 const testimonials = [
   {
@@ -104,7 +104,7 @@ export function Testimonials() {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-emerald-500/10 rounded-2xl blur-xl" />
             <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 lg:p-12 border border-slate-700/50">
-              <Quote size={48} className="text-cyan-400 mb-6" />
+              <Check size={48} className="text-cyan-400 mb-6" />
               
               <motion.div
                 key={currentIndex}
