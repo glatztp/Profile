@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { ArrowRight, Download, Github, LinkedinLogo } from 'phosphor-react';
+import { ArrowRight, Download, GithubLogo, LinkedinLogo } from 'phosphor-react';
 
 export function Hero() {
   const controls = useAnimation();
