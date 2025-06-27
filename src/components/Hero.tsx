@@ -1,151 +1,203 @@
 import { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
+import { ArrowRight, Download, Github, LinkedinLogo } from 'phosphor-react';
 
 export function Hero() {
   const controls = useAnimation();
   const [scrollY, setScrollY] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     function onScroll() {
       setScrollY(window.scrollY);
     }
+    
+    function onMouseMove(e: MouseEvent) {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    }
+    
     window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('mousemove', onMouseMove);
+    
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('mousemove', onMouseMove);
+    };
   }, []);
 
-  useEffect(() => {
-    const glitchInterval = setInterval(() => {
-      controls.start({ x: [0, -5, 5, -5, 0], opacity: [1, 0.8, 0.6, 0.8, 1] });
-    }, 3000);
-    return () => clearInterval(glitchInterval);
-  }, [controls]);
+  const particles = Array.from({ length: 50 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 4 + 1,
+    duration: Math.random() * 20 + 10,
+  }));
 
   return (
-   <section
-  id="home"
-  className="relative h-screen overflow-hidden flex flex-col justify-center items-center text-center px-6 text-white"
->
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-slate-900/40 to-emerald-900/20"
+          style={{
+            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
+          }}
+        />
+        
+        {/* Hero Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1488590528505-98d2b5aba04b)',
+            transform: `translateY(${scrollY * 0.5}px) scale(1.1)`,
+          }}
+        />
 
-      <div
-        className="fixed top-0 left-0 w-full h-full bg-[url('/background-tech.jpg')] bg-cover bg-center opacity-20 pointer-events-none"
-        style={{ transform: `translateY(${scrollY * 0.3}px)` }}
-      />
-
-      <div className="pointer-events-none absolute inset-0 z-10">
-        {[...Array(30)].map((_, i) => (
-          <span
-            key={i}
-            className="block absolute bg-white rounded-full opacity-20 animate-pulse"
+        {/* Floating Particles */}
+        {particles.map((particle) => (
+          <motion.div
+            key={particle.id}
+            className="absolute bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full opacity-30"
             style={{
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+            }}
+            animate={{
+              y: [-20, 20, -20],
+              x: [-10, 10, -10],
+              opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              ease: "easeInOut",
             }}
           />
         ))}
       </div>
 
-      <motion.h1
-        animate={controls}
-        initial={{ x: 0, opacity: 1 }}
-        className="relative text-7xl md:text-9xl font-extrabold mb-6 bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 bg-clip-text text-transparent select-none drop-shadow-lg"
-        style={{ textShadow: '0 0 10px rgba(255,255,255,0.15)' }}
-      >
-        Gabriel Glatz
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-700 to-indigo-500 filter blur-sm mix-blend-screen animate-glitch1"
+      {/* Content */}
+      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-6"
         >
-          Gabriel Glatz
-        </span>
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-pink-600 to-purple-700 filter blur-[2px] mix-blend-screen animate-glitch2"
+          <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 border border-cyan-500/30 text-cyan-300 text-sm font-medium mb-4">
+            Welcome to my digital world ✨
+          </span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-5xl md:text-7xl lg:text-8xl font-black mb-6"
         >
-          Gabriel Glatz
-        </span>
-      </motion.h1>
+          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400 animate-gradient">
+            Gabriel Glatz
+          </span>
+          <span className="block text-3xl md:text-4xl lg:text-5xl text-slate-300 font-light mt-2">
+            Full-Stack Developer
+          </span>
+        </motion.h1>
 
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 1 }}
-        className="text-lg md:text-2xl max-w-3xl mb-10 text-gray-300 tracking-wider"
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+        >
+          I craft digital experiences that blend innovative design with powerful functionality. 
+          Transforming ideas into scalable, user-centric applications with modern technologies.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+        >
+          <motion.a
+            href="#portfolio"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="group flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
+          >
+            View My Work
+            <ArrowRight 
+              size={20} 
+              className="group-hover:translate-x-1 transition-transform" 
+            />
+          </motion.a>
+
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="group flex items-center gap-3 border-2 border-cyan-500/50 text-cyan-400 px-8 py-4 rounded-full font-semibold hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-300"
+          >
+            <Download size={20} />
+            Download CV
+          </motion.a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="flex justify-center gap-6"
+        >
+          <motion.a
+            href="https://github.com/glatztp"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.2, y: -3 }}
+            className="p-3 rounded-full bg-slate-800/50 text-slate-400 hover:text-cyan-400 hover:bg-slate-700/50 transition-all duration-300"
+          >
+            <Github size={24} />
+          </motion.a>
+          
+          <motion.a
+            href="https://linkedin.com/in/gabriel-glatz"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.2, y: -3 }}
+            className="p-3 rounded-full bg-slate-800/50 text-slate-400 hover:text-cyan-400 hover:bg-slate-700/50 transition-all duration-300"
+          >
+            <LinkedinLogo size={24} />
+          </motion.a>
+        </motion.div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        Front-End Developer, UI/UX, transformando café em código e bugs em features.
-      </motion.p>
-
-      <motion.a
-        href="#contato"
-        whileHover={{ scale: 1.15, boxShadow: '0 0 20px rgba(139, 92, 246, 0.8)' }}
-        whileTap={{ scale: 0.95, boxShadow: '0 0 10px rgba(139, 92, 246, 0.6)' }}
-        className="relative z-20 bg-purple-700 hover:bg-purple-800 transition-colors text-white px-10 py-4 rounded-full font-semibold shadow-lg"
-      >
-        Fala comigo
-      </motion.a>
-
-      <style>{`
-        @keyframes glitch1 {
-          0% {
-            clip-path: inset(0 0 0 0);
-            transform: translate(0);
-          }
-          20% {
-            clip-path: inset(10% 0 85% 0);
-            transform: translate(-3px, -1px);
-          }
-          40% {
-            clip-path: inset(20% 0 65% 0);
-            transform: translate(3px, 1px);
-          }
-          60% {
-            clip-path: inset(15% 0 70% 0);
-            transform: translate(-2px, 1px);
-          }
-          80% {
-            clip-path: inset(10% 0 85% 0);
-            transform: translate(2px, -1px);
-          }
-          100% {
-            clip-path: inset(0 0 0 0);
-            transform: translate(0);
-          }
-        }
-        @keyframes glitch2 {
-          0% {
-            clip-path: inset(0 0 0 0);
-            transform: translate(0);
-          }
-          20% {
-            clip-path: inset(80% 0 10% 0);
-            transform: translate(3px, 1px);
-          }
-          40% {
-            clip-path: inset(65% 0 20% 0);
-            transform: translate(-3px, -1px);
-          }
-          60% {
-            clip-path: inset(70% 0 15% 0);
-            transform: translate(2px, -1px);
-          }
-          80% {
-            clip-path: inset(85% 0 10% 0);
-            transform: translate(-2px, 1px);
-          }
-          100% {
-            clip-path: inset(0 0 0 0);
-            transform: translate(0);
-          }
-        }
-        .animate-glitch1 {
-          animation: glitch1 3s infinite;
-        }
-        .animate-glitch2 {
-          animation: glitch2 3s infinite;
-        }
-      `}</style>
+        <div className="flex flex-col items-center gap-2 text-slate-400">
+          <span className="text-sm">Scroll to explore</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-6 h-10 border-2 border-cyan-500/50 rounded-full flex justify-center"
+          >
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-1 h-3 bg-gradient-to-b from-cyan-400 to-emerald-400 rounded-full mt-2"
+            />
+          </motion.div>
+        </div>
+      </motion.div>
     </section>
   );
 }
