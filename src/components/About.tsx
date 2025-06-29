@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { Code, Rocket, Heart, Coffee, PaintBrush, Laptop, BookOpen } from 'phosphor-react';
 
 const stats = [
-  { number: '50+', label: 'Projects Completed', icon: Code },
-  { number: '3+', label: 'Years Experience', icon: Rocket },
+  { number: '5+', label: 'Projects Completed', icon: Code },
+  { number: '1+', label: 'Years Experience', icon: Rocket },
   { number: '100%', label: 'Client Satisfaction', icon: Heart },
   { number: '1000+', label: 'Cups of Coffee', icon: Coffee },
 ];
@@ -73,7 +73,7 @@ export function About() {
                 </h3>
                 <div className="space-y-4 text-slate-300 leading-relaxed">
                   <p>
-                    I'm a passionate <strong className="text-cyan-400">Full-Stack Developer</strong> with over 3 years of experience 
+                    I'm a passionate <strong className="text-cyan-400">Software Developer</strong> with over 1 years of experience 
                     creating digital solutions that combine functionality with stunning design.
                   </p>
                   <p>

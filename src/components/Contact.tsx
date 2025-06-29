@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { PaperPlaneTilt, MapPin, Phone, EnvelopeSimple, GithubLogo, LinkedinLogo, TwitterLogo } from 'phosphor-react';
+import { PaperPlaneTilt, MapPin, Phone, EnvelopeSimple, GithubLogo, LinkedinLogo, Check } from 'phosphor-react';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -44,14 +44,14 @@ export function Contact() {
     {
       icon: Phone,
       label: 'Phone',
-      value: '+55 (11) 99999-9999',
-      href: 'tel:+5511999999999',
+      value: '+55 (47) 99926-2337',
+      href: 'tel:+5547999262337',
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'São Paulo, Brazil',
-      href: 'https://maps.google.com/?q=São+Paulo,+Brazil',
+      value: 'Santa Catarina, Brazil',
+      href: 'https://maps.google.com/?q=Santa+Catarina,+Brazil',
     },
   ];
 
@@ -68,12 +68,7 @@ export function Contact() {
       href: 'https://linkedin.com/in/gabriel-glatz',
       color: 'hover:text-blue-400',
     },
-    {
-      icon: TwitterLogo,
-      label: 'Twitter',
-      href: 'https://twitter.com/gabrielglatz',
-      color: 'hover:text-sky-400',
-    },
+
   ];
 
   return (
@@ -119,7 +114,7 @@ export function Contact() {
                     className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg"
                   >
                     <p className="text-green-400 font-medium">
-                      ✅ Message sent successfully! I'll get back to you soon.
+                      <Check /> Message sent successfully! I'll get back to you soon.
                     </p>
                   </motion.div>
                 )}

@@ -7,11 +7,11 @@ const skillCategories = [
     title: 'Frontend',
     icon: <PaintBrush size={32} weight="fill" />,
     skills: [
-      { name: 'React', level: 95, color: 'from-cyan-400 to-blue-500' },
-      { name: 'TypeScript', level: 90, color: 'from-blue-400 to-indigo-500' },
-      { name: 'Next.js', level: 88, color: 'from-slate-400 to-slate-600' },
-      { name: 'Tailwind CSS', level: 92, color: 'from-teal-400 to-cyan-500' },
-      { name: 'Framer Motion', level: 85, color: 'from-purple-400 to-pink-500' },
+      { name: 'React', level: 55, color: 'from-cyan-400 to-blue-500' },
+      { name: 'TypeScript', level: 40, color: 'from-blue-400 to-indigo-500' },
+      { name: 'Next.js', level: 30, color: 'from-slate-400 to-slate-600' },
+      { name: 'Tailwind CSS', level: 55, color: 'from-teal-400 to-cyan-500' },
+      { name: 'Framer Motion', level: 20, color: 'from-purple-400 to-pink-500' },
     ],
   },
   {
@@ -19,22 +19,20 @@ const skillCategories = [
     icon: <GearSix size={32} weight="fill" />,
 
     skills: [
-      { name: 'Node.js', level: 87, color: 'from-green-400 to-emerald-500' },
-      { name: 'Python', level: 82, color: 'from-yellow-400 to-orange-500' },
-      { name: 'Go', level: 78, color: 'from-cyan-400 to-teal-500' },
-      { name: 'SQL', level: 85, color: 'from-blue-400 to-indigo-500' },
-      { name: 'MongoDB', level: 80, color: 'from-green-500 to-teal-500' },
+      { name: 'Node.js', level: 44, color: 'from-green-400 to-emerald-500' },
+      { name: 'Python', level: 70, color: 'from-yellow-400 to-orange-500' },
+      { name: 'Go', level: 30, color: 'from-cyan-400 to-teal-500' },
+      { name: 'SQL', level: 60, color: 'from-blue-400 to-indigo-500' },
     ],
   },
   {
     title: 'Tools & Others',
     icon: <Code size={32} weight="fill" />,
     skills: [
-      { name: 'Git', level: 90, color: 'from-orange-400 to-red-500' },
-      { name: 'Docker', level: 75, color: 'from-blue-500 to-cyan-500' },
-      { name: 'AWS', level: 70, color: 'from-yellow-500 to-orange-500' },
-      { name: 'Figma', level: 85, color: 'from-pink-400 to-purple-500' },
-      { name: 'Scrum', level: 88, color: 'from-indigo-400 to-purple-500' },
+      { name: 'Git', level: 60, color: 'from-orange-400 to-red-500' },
+      { name: 'Docker', level: 25, color: 'from-blue-500 to-cyan-500' },
+      { name: 'Figma', level: 45, color: 'from-pink-400 to-purple-500' },
+      { name: 'Scrum', level: 60, color: 'from-indigo-400 to-purple-500' },
     ],
   },
 ];
@@ -151,7 +149,7 @@ export function Skills() {
           </h3>
 
           <div className="flex flex-wrap justify-center gap-4">
-            {['HTML5', 'CSS3', 'JavaScript', 'Vue.js', 'Sass', 'GraphQL', 'Redis', 'Nginx', 'Linux', 'Jest', 'Cypress', 'Webpack'].map((tech, index) => (
+            {['HTML5', 'CSS3', 'JavaScript', 'C', 'Arduino', 'Mycropython'].map((tech, index) => (
               <motion.div
                 key={tech}
                 initial={{ opacity: 0, scale: 0.8 }}

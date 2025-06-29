@@ -4,100 +4,61 @@ import { CalendarCheck, MapPin, Briefcase } from 'phosphor-react';
 const experiences = [
   {
     id: 1,
-    title: 'Senior Full-Stack Developer',
-    company: 'TechCorp Solutions',
-    location: 'São Paulo, BR',
-    period: '2023 - Present',
-    type: 'Full-time',
-    description: 'Leading development of scalable web applications using React, Node.js, and cloud technologies. Mentoring junior developers and architecting solutions for enterprise clients.',
+    title: 'Systems Developer',
+    company: 'Grupo Malwee',
+    location: 'Jaraguá do Sul, BR',
+    period: '2024 - current',
+    type: 'Apprenticeship',
+    description:
+      'Working as a systems developer within the technology department, contributing to the development and maintenance of internal software solutions. Collaborating with multidisciplinary teams on both front-end and back-end projects with a focus on clean code, accessibility, and performance.',
     achievements: [
-      'Increased application performance by 40% through optimization',
-      'Led a team of 5 developers on multiple high-impact projects',
-      'Implemented CI/CD pipelines reducing deployment time by 60%',
+      'Delivered real-world features in a corporate production environment',
+      'Worked with agile methodologies and version control practices',
+      'Actively contributed to internal system modernization projects',
     ],
-    technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'Docker'],
+    technologies: ['React', 'Tailwind CSS', 'TypeScript', 'Node.js', 'SQL'],
     current: true,
   },
-  {
-    id: 2,
-    title: 'Frontend Developer',
-    company: 'Digital Innovations',
-    location: 'Remote',
-    period: '2022 - 2023',
-    type: 'Full-time',
-    description: 'Developed responsive web applications and collaborated with UX/UI designers to create exceptional user experiences for various clients.',
-    achievements: [
-      'Built 15+ responsive websites with 99% client satisfaction',
-      'Reduced page load times by 50% through code optimization',
-      'Collaborated with cross-functional teams across 3 time zones',
-    ],
-    technologies: ['React', 'Vue.js', 'Tailwind CSS', 'JavaScript', 'Figma'],
-    current: false,
-  },
-  {
-    id: 3,
-    title: 'Junior Web Developer',
-    company: 'StartupHub',
-    location: 'São Paulo, BR',
-    period: '2021 - 2022',
-    type: 'Full-time',
-    description: 'Started my professional journey building web applications and learning modern development practices in a fast-paced startup environment.',
-    achievements: [
-      'Contributed to 10+ successful project launches',
-      'Learned and implemented modern web technologies',
-      'Participated in agile development methodologies',
-    ],
-    technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'Git'],
-    current: false,
-  },
+
   {
     id: 4,
     title: 'Freelance Web Developer',
     company: 'Self-Employed',
     location: 'Remote',
-    period: '2020 - 2021',
+    period: '2025 - current',
     type: 'Freelance',
-    description: 'Provided web development services to small businesses, creating custom websites and e-commerce solutions.',
+    description:
+      'Provided web development services to small businesses, creating custom websites and e-commerce solutions.',
     achievements: [
-      'Completed 25+ freelance projects successfully',
+      'Completed 4+ freelance projects successfully',
       'Built strong client relationships with 95% retention rate',
       'Developed expertise in various web technologies',
     ],
-    technologies: ['WordPress', 'HTML', 'CSS', 'JavaScript', 'PHP'],
+    technologies: ['WordPress', 'HTML', 'CSS', 'JavaScript',],
     current: false,
   },
 ];
 
+
 const education = [
   {
     id: 1,
-    title: 'Computer Science',
-    institution: 'University of São Paulo',
-    location: 'São Paulo, BR',
-    period: '2019 - 2023',
-    type: 'Bachelor\'s Degree',
-    description: 'Focused on software engineering, algorithms, and modern web technologies. Graduated with honors.',
+    title: 'Industrial Information Systems Program (PSII V1)',
+    institution: 'SENAI',
+    location: 'Jaraguá do Sul, BR',
+    period: '2024 - current',
+    type: 'Technical Degree',
+    description:
+      'Technical course focused on software development and industrial automation, with emphasis on modern languages, system integration, and software engineering practices.',
     achievements: [
-      'Graduated Magna Cum Laude (GPA: 3.8/4.0)',
-      'Led university\'s coding club for 2 years',
-      'Published research on web performance optimization',
+      'Developed real-world integrative projects for industrial applications',
+      'Completed over 400 hours of hands-on technical training',
+      'Recognized for strong performance in programming and web development',
     ],
   },
-  {
-    id: 2,
-    title: 'Modern Web Development',
-    institution: 'Rocketseat',
-    location: 'Online',
-    period: '2020',
-    type: 'Bootcamp',
-    description: 'Intensive bootcamp covering React, Node.js, and modern development practices.',
-    achievements: [
-      'Completed 500+ hours of hands-on coding',
-      'Built 10+ full-stack applications',
-      'Achieved top 5% performance in final projects',
-    ],
-  },
+
 ];
+
 
 export function Experience() {
   return (

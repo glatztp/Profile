@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, GithubLogo, LinkedinLogo } from 'phosphor-react';
+import { ArrowRight, GithubLogo, LinkedinLogo } from 'phosphor-react';
 
 export function Hero() {
 
@@ -75,7 +75,7 @@ export function Hero() {
             Gabriel Glatz
           </span>
           <span className="block text-3xl md:text-4xl lg:text-5xl text-slate-300 font-light mt-2">
-            Full-Stack Developer
+            Software Developer
           </span>
         </motion.h1>
 
@@ -108,15 +108,6 @@ export function Hero() {
             />
           </motion.a>
 
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="group flex items-center gap-3 border-2 border-cyan-500/50 text-cyan-400 px-8 py-4 rounded-full font-semibold hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-300"
-          >
-            <Download size={20} />
-            Download CV
-          </motion.a>
         </motion.div>
 
         <motion.div
