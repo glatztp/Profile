@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import { useState } from 'react';
 import {
   PaperPlaneTilt,
@@ -40,19 +41,33 @@ export function Contact() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    // Simulate form submission delay
-    await new Promise((r) => setTimeout(r, 2000));
+  try {
+    await emailjs.send(
+      'service_qvvnyvi', // ID do seu serviço (fixo)
+      'template_jlw5wgf', // ID do seu template
+      {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      },
+      'gH7FhQnOKbr2NS8HK' // sua public key
+    );
 
     setSubmitted(true);
-    setIsSubmitting(false);
     setFormData({ name: '', email: '', subject: '', message: '' });
-
     setTimeout(() => setSubmitted(false), 5000);
-  };
+  } catch (error) {
+    console.error('Erro ao enviar:', error);
+    alert('Ocorreu um erro ao enviar. Tente novamente mais tarde.');
+  }
+
+  setIsSubmitting(false);
+};
 
   const contactInfo = [
     {
