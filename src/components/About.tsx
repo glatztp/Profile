@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Code, Rocket, Heart, Coffee, PaintBrush, Laptop, BookOpen } from 'phosphor-react';
 import CountUp from './animations/CountUp';
 import ProfileCard from './animations/ProfileCard';
+import profileBg from '../assets/profile-bg.png';
+
 
 const stats = [
   { number: 5, suffix: '+', label: 'Projects Completed', icon: Code },
@@ -73,11 +75,10 @@ export function About() {
               title="Software Developer"
               handle="glatztp"
               status="Available for work"
-              contactText="Say Hello"
-              avatarUrl="src/assets/profile-bg.png"
+              contactText="Say Hello" avatarUrl={profileBg}
               showUserInfo={true}
               enableTilt={true}
-              icon={<Code />} 
+              icon={<Code />}
               onContactClick={() => console.log('Contato enviado')}
             />
           </div>
@@ -89,15 +90,15 @@ export function About() {
               </h3>
               <div className="space-y-4 text-[#eae0d5]/80 leading-relaxed">
                 <p>
-                  I'm a passionate <strong className="text-[#c6ac8f]">Software Developer</strong> with over 1 year of experience 
+                  I'm a passionate <strong className="text-[#c6ac8f]">Software Developer</strong> with over 1 year of experience
                   creating digital solutions that combine functionality with stunning design.
                 </p>
                 <p>
-                  My journey began with curiosity about how websites work, and it has evolved into a 
+                  My journey began with curiosity about how websites work, and it has evolved into a
                   deep passion for crafting user experiences that are both beautiful and functional.
                 </p>
                 <p>
-                  When I'm not coding, you'll find me exploring new technologies, contributing to 
+                  When I'm not coding, you'll find me exploring new technologies, contributing to
                   open-source projects, or sharing knowledge with the developer community.
                 </p>
               </div>
@@ -116,18 +117,17 @@ export function About() {
                   >
                     <div className="absolute inset-0 bg-[#c6ac8f]/10 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div className="relative bg-[#22333b]/60 backdrop-blur-sm rounded-xl p-6 border border-[#5e503f]/50 group-hover:border-[#c6ac8f]/50 transition-all duration-300">
-                      <IconComponent 
-                        size={32} 
-                        className={`mb-4 transition-colors duration-300 ${
-                          hoveredStat === index ? 'text-[#c6ac8f]' : 'text-[#eae0d5]/70'
-                        }`}
+                      <IconComponent
+                        size={32}
+                        className={`mb-4 transition-colors duration-300 ${hoveredStat === index ? 'text-[#c6ac8f]' : 'text-[#eae0d5]/70'
+                          }`}
                       />
                       <div className="text-3xl font-bold text-[#eae0d5] mb-2">
                         <CountUp
                           from={0}
                           to={stat.number}
                           duration={1.5}
-                          separator="," 
+                          separator=","
                           className="inline"
                         />
                         {stat.suffix}
