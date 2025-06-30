@@ -69,10 +69,10 @@ export function Experience() {
   return (
     <section
       id="experience"
-      className="py-20 lg:py-32"
+      className="py-12 sm:py-16 md:py-20 lg:py-32"
       style={{ backgroundColor: colors.black }}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -92,27 +92,27 @@ export function Experience() {
             My journey
           </span>
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{ color: colors.almond }}
           >
             <span
-               className="bg-clip-text text-transparent inline-block"
-                  style={{
-                    backgroundImage: 'linear-gradient(90deg, #c6ac8f, #5e503f)',
-                  }}
+              className="bg-clip-text text-transparent inline-block"
+              style={{
+                backgroundImage: 'linear-gradient(90deg, #c6ac8f, #5e503f)',
+              }}
             >
               Experience & Education
             </span>
           </h2>
           <p
-            className="text-xl max-w-3xl mx-auto"
+            className="text-lg sm:text-xl max-w-3xl mx-auto"
             style={{ color: colors.almond + 'cc' }}
           >
             My professional journey and educational background in technology
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
           {/* Experience Section */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -121,7 +121,7 @@ export function Experience() {
             viewport={{ once: true }}
           >
             <h3
-              className="text-2xl font-bold mb-8 flex items-center gap-3"
+              className="text-xl sm:text-2xl font-bold mb-8 flex items-center gap-3"
               style={{ color: colors.almond }}
             >
               <Briefcase size={28} style={{ color: colors.khaki }} />
@@ -131,10 +131,9 @@ export function Experience() {
             <div className="relative">
               {/* Timeline Line */}
               <div
-                className="absolute left-6 top-0 bottom-0 w-0.5 rounded-full"
+                className="absolute left-5 sm:left-6 top-0 bottom-0 w-0.5 rounded-full"
                 style={{
-                  background:
-                    `linear-gradient(to bottom, ${colors.khaki}, ${colors.walnut_brown}, ${colors.khaki})`,
+                  background: `linear-gradient(to bottom, ${colors.khaki}, ${colors.walnut_brown}, ${colors.khaki})`,
                 }}
               />
 
@@ -146,19 +145,17 @@ export function Experience() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="relative pl-16"
+                    className="relative pl-12 sm:pl-16"
                   >
                     {/* Timeline Dot */}
                     <div
-                      className={`absolute left-4 top-6 w-4 h-4 rounded-full border-4 z-10`}
+                      className="absolute left-3 sm:left-4 top-6 w-3 sm:w-4 h-3 sm:h-4 rounded-full border-4 z-10"
                       style={{
                         borderColor: colors.black,
                         backgroundColor: exp.current
                           ? colors.khaki
                           : colors.walnut_brown,
-                        animation: exp.current
-                          ? 'pulseGlow 2s infinite'
-                          : 'none',
+                        animation: exp.current ? 'pulseGlow 2s infinite' : 'none',
                       }}
                     />
 
@@ -166,8 +163,7 @@ export function Experience() {
                       <div
                         className="absolute inset-0 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity"
                         style={{
-                          background:
-                            `linear-gradient(to right, ${colors.khaki}22, ${colors.walnut_brown}22)`,
+                          background: `linear-gradient(to right, ${colors.khaki}22, ${colors.walnut_brown}22)`,
                         }}
                       />
                       <div
@@ -180,7 +176,7 @@ export function Experience() {
                         <div className="flex flex-wrap items-start justify-between mb-4">
                           <div>
                             <h4
-                              className="text-xl font-bold mb-1"
+                              className="text-lg sm:text-xl font-bold mb-1"
                               style={{ color: colors.almond }}
                             >
                               {exp.title}
@@ -206,15 +202,15 @@ export function Experience() {
                         </div>
 
                         <div
-                          className="flex items-center gap-4 mb-4 text-sm"
+                          className="flex items-center gap-3 sm:gap-4 mb-4 text-xs sm:text-sm"
                           style={{ color: colors.almond + 'cc' }}
                         >
                           <div className="flex items-center gap-1">
-                            <CalendarCheck size={16} />
+                            <CalendarCheck size={14} />
                             {exp.period}
                           </div>
                           <div className="flex items-center gap-1">
-                            <MapPin size={16} />
+                            <MapPin size={14} />
                             {exp.location}
                           </div>
                           <span
@@ -229,7 +225,7 @@ export function Experience() {
                         </div>
 
                         <p
-                          className="mb-4 leading-relaxed"
+                          className="mb-4 leading-relaxed text-sm sm:text-base"
                           style={{ color: colors.almond + 'cc' }}
                         >
                           {exp.description}
@@ -246,7 +242,7 @@ export function Experience() {
                             {exp.achievements.map((achievement, idx) => (
                               <li
                                 key={idx}
-                                className="text-sm flex items-start gap-2"
+                                className="text-xs sm:text-sm flex items-start gap-2"
                                 style={{ color: colors.almond + 'aa' }}
                               >
                                 <span
@@ -261,11 +257,11 @@ export function Experience() {
                           </ul>
                         </div>
 
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
                           {exp.technologies.map((tech) => (
                             <span
                               key={tech}
-                              className="px-2 py-1 text-xs rounded border"
+                              className="px-2 py-1 rounded border"
                               style={{
                                 backgroundColor: colors.walnut_brown + '40',
                                 color: colors.almond,
@@ -292,7 +288,7 @@ export function Experience() {
             viewport={{ once: true }}
           >
             <h3
-              className="text-2xl font-bold mb-8 flex items-center gap-3"
+              className="text-xl sm:text-2xl font-bold mb-8 flex items-center gap-3"
               style={{ color: colors.almond }}
             >
               <CalendarCheck size={28} style={{ color: colors.khaki }} />
@@ -313,8 +309,7 @@ export function Experience() {
                     <div
                       className="absolute inset-0 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity"
                       style={{
-                        background:
-                          `linear-gradient(to right, ${colors.khaki}22, ${colors.walnut_brown}22)`,
+                        background: `linear-gradient(to right, ${colors.khaki}22, ${colors.walnut_brown}22)`,
                       }}
                     />
                     <div
@@ -327,7 +322,7 @@ export function Experience() {
                       <div className="flex flex-wrap items-start justify-between mb-4">
                         <div>
                           <h4
-                            className="text-xl font-bold mb-1"
+                            className="text-lg sm:text-xl font-bold mb-1"
                             style={{ color: colors.almond }}
                           >
                             {edu.title}
@@ -351,21 +346,21 @@ export function Experience() {
                       </div>
 
                       <div
-                        className="flex items-center gap-4 mb-4 text-sm"
+                        className="flex items-center gap-3 sm:gap-4 mb-4 text-xs sm:text-sm"
                         style={{ color: colors.almond + 'cc' }}
                       >
                         <div className="flex items-center gap-1">
-                          <CalendarCheck size={16} />
+                          <CalendarCheck size={14} />
                           {edu.period}
                         </div>
                         <div className="flex items-center gap-1">
-                          <MapPin size={16} />
+                          <MapPin size={14} />
                           {edu.location}
                         </div>
                       </div>
 
                       <p
-                        className="mb-4 leading-relaxed"
+                        className="mb-4 leading-relaxed text-sm sm:text-base"
                         style={{ color: colors.almond + 'cc' }}
                       >
                         {edu.description}
@@ -382,7 +377,7 @@ export function Experience() {
                           {edu.achievements.map((achievement, idx) => (
                             <li
                               key={idx}
-                              className="text-sm flex items-start gap-2"
+                              className="text-xs sm:text-sm flex items-start gap-2"
                               style={{ color: colors.almond + 'aa' }}
                             >
                               <span
