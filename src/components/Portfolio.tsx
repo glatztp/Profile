@@ -1,56 +1,59 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import { GithubLogo, Eye, Link } from 'phosphor-react';
+import CardSwap, { Card } from './animations/CardSwap';
 
-const projects = [
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  category: string;
+  github: string;
+  live?: string;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include user authentication, product management, shopping cart, and payment processing.',
-    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=958&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    description:
+      'A full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include user authentication, product management, shopping cart, and payment processing.',
+    image:
+      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=958&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'TypeScript'],
     category: 'Full-Stack',
     github: 'https://github.com/glatztp/Furniture-React',
     live: 'https://furniro-furniture-rust.vercel.app/',
-    featured: true,
   },
   {
     id: 2,
     title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-    image: 'https://images.unsplash.com/photo-1692158962133-6c97ee651ab9?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    description:
+      'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
+    image:
+      'https://images.unsplash.com/photo-1692158962133-6c97ee651ab9?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     technologies: ['Next.js', 'Prisma', 'Socket.io', 'Tailwind CSS'],
     category: 'Frontend',
     github: 'https://github.com/glatztp/Controle-de-Gastos',
-    featured: true,
   },
   {
     id: 3,
     title: 'AI Chat Application',
-    description: 'An intelligent chat application powered by OpenAI API with custom trained models for specific use cases and contexts.',
-    image: 'https://images.unsplash.com/photo-1737894543924-15e1ff7adbdb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    description:
+      'An intelligent chat application powered by OpenAI API with custom trained models for specific use cases and contexts.',
+    image:
+      'https://images.unsplash.com/photo-1737894543924-15e1ff7adbdb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     technologies: ['React', 'Python', 'FastAPI', 'OpenAI API'],
     category: 'AI/ML',
     github: 'https://github.com/glatztp/Chat-bot',
     live: 'https://chat-bot-sooty-ten.vercel.app/',
-    featured: false,
   },
-
 ];
 
-const categories = ['All', 'Featured', 'Frontend',  'AI/ML'];
-
 export function Portfolio() {
-  const [activeCategory, setActiveCategory] = useState('All');
-
-  const filteredProjects = projects.filter(project => {
-    if (activeCategory === 'All') return true;
-    if (activeCategory === 'Featured') return project.featured;
-    return project.category === activeCategory;
-  });
-
   return (
-    <section id="portfolio" className="py-20 lg:py-32">
+    <section id="portfolio" className="py-20 lg:py-32 bg-[#0a0908]">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -59,157 +62,91 @@ export function Portfolio() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 border border-cyan-500/30 text-cyan-300 text-sm font-medium mb-4">
+          <span
+            className="inline-block px-4 py-2 rounded-full border text-sm font-medium mb-4"
+            style={{
+              background: 'linear-gradient(90deg, #eae0d5 20%, #c6ac8f 80%)',
+              borderColor: 'rgba(94,80,63,0.3)',
+              color: '#5e503f',
+            }}
+          >
             My work
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">
+          <h2
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+          >
+            <span className="bg-clip-text text-transparent inline-block"
+              style={{
+                backgroundImage: 'linear-gradient(90deg, #c6ac8f, #5e503f)',
+              }}>
               Featured Projects
             </span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: '#786c60' }}>
             A collection of projects showcasing my skills in modern web development
           </p>
         </motion.div>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                activeCategory === category
-                  ? 'bg-gradient-to-r from-cyan-500 to-emerald-500 text-white shadow-lg'
-                  : 'bg-slate-800/50 text-slate-400 border border-slate-700/50 hover:text-cyan-400 hover:border-cyan-500/50'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-           
-              className="group relative"
-            >
-              <div className="relative overflow-hidden rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 group-hover:border-cyan-500/50 transition-all duration-500">
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Overlay Actions */}
-                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <motion.a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="p-3 bg-cyan-500 text-white rounded-full hover:bg-cyan-600 transition-colors"
-                    >
-                      <Eye size={20} />
-                    </motion.a>
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="p-3 bg-slate-700 text-white rounded-full hover:bg-slate-600 transition-colors"
-                    >
-                      <GithubLogo size={20} />
-                    </motion.a>
+        <div className="relative" style={{ height: '600px' }}>
+          <CardSwap cardDistance={90} verticalDistance={70} delay={5000} pauseOnHover={false}>
+            {projects.map((project) => (
+              <Card key={project.id}>
+                <div className="bg-[#0a0908] rounded-xl p-5 flex flex-col h-full w-full max-w-full">
+                  <div className="w-full h-48 rounded-lg overflow-hidden mb-4">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
+                    />
                   </div>
-
-                  {/* Featured Badge */}
-                  {project.featured && (
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-xs font-bold rounded-full">
-                        ⭐ Featured
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Project Info */}
-                <div className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                      {project.title}
-                    </h3>
-                    <span className="px-2 py-1 bg-slate-700/50 text-cyan-400 text-xs rounded-full">
-                      {project.category}
-                    </span>
+                    <h3 className="text-xl font-bold text-[#eae0d5]">{project.title}</h3>
+                    {/* Removido badge Featured pois propriedade não existe */}
                   </div>
-                  
-                  <p className="text-slate-400 text-sm mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <p className="text-sm text-[#786c60] flex-grow">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-4 mb-4">
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-slate-700/30 text-slate-300 text-xs rounded border border-slate-600/50"
+                        className="text-xs px-2 py-1 rounded border"
+                        style={{
+                          borderColor: 'rgba(120,108,96,0.5)',
+                          color: '#eae0d5',
+                          backgroundColor: 'rgba(94,80,63,0.3)',
+                        }}
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  
-                  {/* Links */}
-                  <div className="flex gap-3">
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
-                    >
-                      <Link size={16} />
-                      Live Demo
-                    </a>
+                  <div className="flex gap-4 mt-auto">
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-sm font-semibold"
+                        style={{ color: '#c6ac8f' }}
+                      >
+                        <Eye size={16} /> Live
+                      </a>
+                    )}
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-slate-400 hover:text-slate-300 transition-colors text-sm font-medium"
+                      className="flex items-center gap-1 text-sm font-semibold"
+                      style={{ color: '#786c60' }}
                     >
-                      <GithubLogo size={16} />
-                      Code
+                      <GithubLogo size={16} /> Code
                     </a>
                   </div>
                 </div>
-
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              </div>
-            </motion.div>
-          ))}
+              </Card>
+            ))}
+          </CardSwap>
         </div>
 
-        {/* Call to Action */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -217,14 +154,19 @@ export function Portfolio() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <p className="text-slate-400 mb-6">
+          <p style={{ color: '#786c60' }} className="mb-6">
             Interested in working together or want to see more of my work?
           </p>
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold shadow-lg transition-all duration-300"
+            style={{
+              background: 'linear-gradient(90deg, #c6ac8f, #5e503f)',
+              color: '#0a0908',
+              boxShadow: '0 4px 14px rgba(198,172,143,0.5)',
+            }}
           >
             Let's Work Together
             <Link size={20} />
