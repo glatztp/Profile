@@ -74,7 +74,7 @@ export function About() {
               handle="glatztp"
               status="Available for work"
               contactText="Say Hello"
-              avatarUrl="/images/Profile-bg.png"
+              avatarUrl="src/assets/profile-bg.png"
               showUserInfo={true}
               enableTilt={true}
               icon={<Code />} 
