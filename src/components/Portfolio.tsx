@@ -21,7 +21,7 @@ const projects: Project[] = [
       'A full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include user authentication, product management, shopping cart, and payment processing.',
     image:
       'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=958&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'TypeScript'],
+    technologies: ['React', 'Node.js', 'TypeScript'],
     category: 'Full-Stack',
     github: 'https://github.com/glatztp/Furniture-React',
     live: 'https://furniro-furniture-rust.vercel.app/',
@@ -33,7 +33,7 @@ const projects: Project[] = [
       'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
     image:
       'https://images.unsplash.com/photo-1692158962133-6c97ee651ab9?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    technologies: ['Next.js', 'Prisma', 'Socket.io', 'Tailwind CSS'],
+    technologies: ['HTML', 'css', 'Javascript'],
     category: 'Frontend',
     github: 'https://github.com/glatztp/Controle-de-Gastos',
   },
