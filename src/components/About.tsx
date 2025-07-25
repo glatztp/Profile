@@ -90,7 +90,7 @@ export function About() {
               </h3>
               <div className="space-y-4 text-[#eae0d5]/80 leading-relaxed">
                 <p>
-                  I'm a passionate <strong className="text-[#c6ac8f]">Software Developer</strong> with over 1 year of experience
+                  I'm a passionate <strong className="text-[#c6ac8f]">Software Developer</strong> with over 2 year of experience
                   creating digital solutions that combine functionality with stunning design.
                 </p>
                 <p>
