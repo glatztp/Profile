@@ -147,18 +147,18 @@ export function Skills() {
     <section
       id="skills"
       style={{ backgroundColor: "#0a0908" }}
-      className="py-20 lg:py-32 text-white"
+      className="py-12 xs:py-16 sm:py-20 lg:py-32 text-white px-4 xs:px-6"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 xs:mb-12 sm:mb-16"
         >
           <span
-            className="inline-block px-4 py-2 rounded-full mb-4 font-medium text-sm"
+            className="inline-block px-3 py-1.5 xs:px-4 xs:py-2 rounded-full mb-3 xs:mb-4 font-medium text-xs xs:text-sm"
             style={{
               background: "linear-gradient(90deg, #c6ac8f33, #5e503f33)",
               border: "1px solid #c6ac8f80",
@@ -167,7 +167,7 @@ export function Skills() {
           >
             My expertise
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-corporate-semibold mb-6 tracking-tight-corporate">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-corporate-semibold mb-4 xs:mb-6 tracking-tight-corporate leading-tight">
             <span
               className="bg-clip-text text-transparent inline-block"
               style={{
@@ -178,7 +178,7 @@ export function Skills() {
             </span>
           </h2>
           <p
-            className="text-xl max-w-3xl mx-auto font-body font-corporate-normal tracking-normal-corporate"
+            className="text-sm xs:text-base sm:text-lg md:text-xl max-w-xs xs:max-w-lg sm:max-w-2xl md:max-w-3xl mx-auto font-body font-corporate-normal tracking-normal-corporate px-2 xs:px-0"
             style={{ color: "#eae0d5cc" }}
           >
             A comprehensive toolkit for creating exceptional digital experiences
@@ -191,7 +191,7 @@ export function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex justify-center mb-12"
+          className="flex justify-center mb-8 xs:mb-12 overflow-x-auto px-2"
         >
           <div
             style={{
@@ -200,7 +200,7 @@ export function Skills() {
               borderRadius: "9999px",
               border: "1px solid rgba(34, 51, 59, 0.5)",
             }}
-            className="flex p-2"
+            className="flex p-1 xs:p-2 gap-1 xs:gap-2 min-w-max"
           >
             {skillCategories.map((category, index) => (
               <button
@@ -217,10 +217,13 @@ export function Skills() {
                       ? "0 4px 12px rgba(198, 172, 143, 0.6)"
                       : "none",
                 }}
-                className="px-6 py-3 rounded-full font-body font-corporate-medium transition-all duration-300 flex items-center gap-2 tracking-wide-corporate"
+                className="px-3 py-2 xs:px-4 xs:py-2.5 sm:px-6 sm:py-3 rounded-full font-body font-corporate-medium transition-all duration-300 flex items-center gap-1 xs:gap-2 tracking-wide-corporate text-xs xs:text-sm whitespace-nowrap"
               >
-                <span>{category.icon}</span>
-                {category.title}
+                <span className="text-sm xs:text-base">{category.icon}</span>
+                <span className="hidden xs:inline">{category.title}</span>
+                <span className="xs:hidden">
+                  {category.title.split(" ")[0]}
+                </span>
               </button>
             ))}
           </div>
@@ -239,7 +242,7 @@ export function Skills() {
               style={{
                 position: "absolute",
                 inset: 0,
-                borderRadius: "1rem",
+                borderRadius: "0.75rem",
                 filter: "blur(40px)",
                 background: "linear-gradient(90deg, #c6ac8f33, #5e503f33)",
               }}

@@ -1477,3 +1477,446 @@ div {
 section {
   background: transparent !important;
 }
+
+/* =================================
+   BREAKPOINTS EXTRAS PARA DISPOSITIVOS PEQUENOS
+   ================================= */
+
+/* xxs: 280px - 319px (Smartphones muito pequenos) */
+@media (max-width: 319px) {
+  body {
+    font-size: 12px !important;
+  }
+
+  .hero-title {
+    font-size: 1.75rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.875rem !important;
+  }
+
+  /* Navbar Ultra Compacta */
+  .navbar {
+    padding: 0.5rem !important;
+  }
+
+  .nav-item {
+    font-size: 0.75rem !important;
+    padding: 0.375rem 0.75rem !important;
+  }
+
+  /* Cards Ultra Compactos */
+  .responsive-card {
+    padding: 0.5rem !important;
+    margin: 0.25rem 0 !important;
+    border-radius: 0.5rem !important;
+  }
+
+  /* Buttons Pequenos */
+  .responsive-btn {
+    font-size: 0.75rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  /* Profile Card Micro */
+  .pc-card {
+    height: 45vh !important;
+    max-height: 280px !important;
+  }
+
+  .pc-details h3 {
+    font-size: 1rem !important;
+  }
+
+  .pc-details p {
+    font-size: 0.75rem !important;
+  }
+
+  /* Portfolio Grid Compacto */
+  .portfolio-grid {
+    gap: 0.5rem !important;
+  }
+
+  /* Skills Grid Compacto */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* xs breakpoint adicional: 320px - 374px */
+@media (min-width: 320px) and (max-width: 374px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+  }
+
+  /* Experience Cards Responsivos */
+  .experience-card {
+    padding: 0.75rem !important;
+  }
+
+  .experience-timeline-line {
+    left: 0.5rem !important;
+  }
+
+  /* Contact Form Responsivo */
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.875rem !important;
+    padding: 0.625rem !important;
+  }
+}
+
+/* sm-extra: 375px - 424px (iPhone SE, etc) */
+@media (min-width: 375px) and (max-width: 424px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero-title {
+    font-size: 2.25rem !important;
+  }
+
+  .pc-card {
+    height: 55vh !important;
+    max-height: 350px !important;
+  }
+}
+
+/* md-extra: 425px - 639px (Smartphones grandes) */
+@media (min-width: 425px) and (max-width: 639px) {
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Orientação Portrait vs Landscape */
+@media (orientation: portrait) and (max-width: 768px) {
+  .pc-card {
+    height: 60vh !important;
+    max-height: 400px !important;
+  }
+
+  .hero-content {
+    padding-top: 2rem !important;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero-title {
+    font-size: 1.5rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+  }
+
+  .pc-card {
+    height: 80vh !important;
+    max-height: 350px !important;
+  }
+
+  .py-16,
+  .py-24,
+  .py-32 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+}
+
+/* Hover States Para Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+  .hover-responsive:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .hover-responsive:active {
+    transform: scale(0.98) !important;
+    transition: transform 0.1s ease !important;
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .responsive-img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+  }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .floating-animation,
+  .pulse-animation,
+  .rotate-animation {
+    animation: none !important;
+  }
+}
+
+/* =================================
+   CLASSES UTILITÁRIAS RESPONSIVAS
+   ================================= */
+
+/* Fluid Typography */
+.text-fluid-xs {
+  font-size: clamp(0.625rem, 1.5vw, 0.75rem);
+}
+.text-fluid-sm {
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+}
+.text-fluid-base {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+.text-fluid-lg {
+  font-size: clamp(1rem, 3vw, 1.125rem);
+}
+.text-fluid-xl {
+  font-size: clamp(1.125rem, 3.5vw, 1.25rem);
+}
+.text-fluid-2xl {
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+}
+.text-fluid-3xl {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+.text-fluid-4xl {
+  font-size: clamp(2rem, 6vw, 3rem);
+}
+.text-fluid-5xl {
+  font-size: clamp(2.5rem, 7vw, 4rem);
+}
+
+/* Fluid Spacing */
+.p-fluid-xs {
+  padding: clamp(0.25rem, 1vw, 0.5rem);
+}
+.p-fluid-sm {
+  padding: clamp(0.5rem, 2vw, 1rem);
+}
+.p-fluid-md {
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+.p-fluid-lg {
+  padding: clamp(1.5rem, 4vw, 2rem);
+}
+.p-fluid-xl {
+  padding: clamp(2rem, 5vw, 3rem);
+}
+
+.m-fluid-xs {
+  margin: clamp(0.25rem, 1vw, 0.5rem);
+}
+.m-fluid-sm {
+  margin: clamp(0.5rem, 2vw, 1rem);
+}
+.m-fluid-md {
+  margin: clamp(1rem, 3vw, 1.5rem);
+}
+.m-fluid-lg {
+  margin: clamp(1.5rem, 4vw, 2rem);
+}
+.m-fluid-xl {
+  margin: clamp(2rem, 5vw, 3rem);
+}
+
+/* Fluid Gap */
+.gap-fluid-xs {
+  gap: clamp(0.25rem, 1vw, 0.5rem);
+}
+.gap-fluid-sm {
+  gap: clamp(0.5rem, 2vw, 1rem);
+}
+.gap-fluid-md {
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+.gap-fluid-lg {
+  gap: clamp(1.5rem, 4vw, 2rem);
+}
+
+/* Fluid Border Radius */
+.rounded-fluid {
+  border-radius: clamp(0.5rem, 2vw, 1.5rem);
+}
+.rounded-fluid-lg {
+  border-radius: clamp(1rem, 3vw, 2rem);
+}
+
+/* Responsive Width Utilities */
+.w-responsive-full {
+  width: 100%;
+}
+.w-responsive-auto {
+  width: auto;
+}
+
+@media (min-width: 640px) {
+  .w-responsive-full {
+    width: auto;
+  }
+  .w-responsive-auto {
+    width: 100%;
+  }
+}
+
+/* Responsive Display Utilities */
+.block-mobile {
+  display: block;
+}
+.hidden-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .block-mobile {
+    display: none;
+  }
+  .hidden-mobile {
+    display: block;
+  }
+}
+
+/* Container Responsive */
+.container-responsive {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-responsive {
+    max-width: 640px;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-responsive {
+    max-width: 768px;
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-responsive {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container-responsive {
+    max-width: 1536px;
+  }
+}
+
+/* Grid Responsive Helpers */
+.grid-responsive-1 {
+  grid-template-columns: 1fr;
+}
+.grid-responsive-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid-responsive-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid-responsive-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (min-width: 640px) {
+  .grid-responsive-1 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-responsive-2 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid-responsive-3 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .grid-responsive-4 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive-1 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid-responsive-2 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .grid-responsive-3 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .grid-responsive-4 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Flex Responsive Helpers */
+.flex-responsive-col {
+  flex-direction: column;
+}
+.flex-responsive-row {
+  flex-direction: row;
+}
+
+@media (min-width: 768px) {
+  .flex-responsive-col {
+    flex-direction: row;
+  }
+  .flex-responsive-row {
+    flex-direction: column;
+  }
+}
+
+/* Aspect Ratio Responsive */
+.aspect-responsive-square {
+  aspect-ratio: 1/1;
+}
+.aspect-responsive-video {
+  aspect-ratio: 16/9;
+}
+.aspect-responsive-card {
+  aspect-ratio: 3/4;
+}
+
+@media (max-width: 767px) {
+  .aspect-responsive-square {
+    aspect-ratio: 4/3;
+  }
+  .aspect-responsive-video {
+    aspect-ratio: 4/3;
+  }
+  .aspect-responsive-card {
+    aspect-ratio: 1/1;
+  }
+}
