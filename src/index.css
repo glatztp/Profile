@@ -92,7 +92,7 @@
 }
 
 body {
-  @apply bg-gradient-to-br from-gray-900 via-black to-slate-950 text-white min-h-screen;
+  @apply bg-black text-white min-h-screen;
   font-family: "Poppins", "Source Sans Pro", sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -324,7 +324,6 @@ div {
   --card-radius: 30px;
 }
 
-
 .pc-card-wrapper {
   perspective: 1000px;
   transform: translate3d(0, 0, 0.1px);
@@ -334,7 +333,6 @@ div {
     drop-shadow(0 0 15px rgba(198, 172, 143, 0.05));
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: visible;
-
 }
 
 .pc-card-wrapper::before {
@@ -1379,6 +1377,56 @@ div {
   opacity: 0.7;
 }
 
+/* Experience Section Animations */
+@keyframes experienceFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes experienceGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(198, 172, 143, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(198, 172, 143, 0.4);
+  }
+}
+
+.experience-card:hover {
+  animation: experienceFloat 3s ease-in-out infinite;
+}
+
+.experience-timeline-node {
+  animation: experienceGlow 2s ease-in-out infinite;
+}
+
+/* Responsive Experience Cards */
+@media (max-width: 768px) {
+  .experience-timeline-line {
+    left: 1rem;
+  }
+
+  .experience-card {
+    padding-left: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-timeline-line {
+    left: 0.75rem;
+  }
+
+  .experience-card {
+    padding-left: 2.5rem;
+  }
+}
+
 /* Estilos para o FaultyTerminal */
 .faulty-terminal-container {
   position: relative;
@@ -1423,17 +1471,6 @@ div {
   );
   pointer-events: none;
   z-index: 1;
-}
-
-/* Garantir que todo o conteúdo tenha fundo transparente */
-body {
-  @apply  text-white min-h-screen;
-  font-family: "Poppins", "Source Sans Pro", sans-serif;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  letter-spacing: 0.01em;
 }
 
 /* Remover fundos de seções para mostrar o terminal */
