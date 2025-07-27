@@ -12,44 +12,52 @@ import {
 import CountUp from "./animations/CountUp";
 import ProfileCard from "./animations/ProfileCard";
 import profileBg from "../assets/profile-bg.png";
-
-const stats = [
-  { number: 5, suffix: "+", label: "Projects Completed", icon: Code },
-  { number: 2, suffix: "+", label: "Years Experience", icon: Rocket },
-  { number: 100, suffix: "%", label: "Client Satisfaction", icon: Heart },
-  { number: 1000, suffix: "+", label: "Cups of Coffee", icon: Coffee },
-];
-
-const values = [
-  {
-    title: "Innovation First",
-    description:
-      "Always exploring cutting-edge technologies and creative solutions to deliver exceptional results.",
-    icon: <Rocket size={32} weight="fill" />,
-  },
-  {
-    title: "User-Centric Design",
-    description:
-      "Every interface I create is designed with the user experience as the top priority.",
-    icon: <PaintBrush size={32} weight="fill" />,
-  },
-  {
-    title: "Clean Code",
-    description:
-      "Writing maintainable, scalable, and well-documented code that stands the test of time.",
-    icon: <Laptop size={32} weight="fill" />,
-  },
-  {
-    title: "Continuous Learning",
-    description:
-      "Staying ahead of the curve by constantly learning new technologies and best practices.",
-    icon: <BookOpen size={32} weight="fill" />,
-  },
-];
+import { useLanguage } from "../contexts/LanguageContext";
 
 export function About() {
+  const { t } = useLanguage();
   const [hoveredStat, setHoveredStat] = useState<number | null>(null);
   const [showNotification, setShowNotification] = useState(false);
+
+  const stats = [
+    { number: 5, suffix: "+", label: t("about.stats.projects"), icon: Code },
+    {
+      number: 2,
+      suffix: "+",
+      label: t("about.stats.experience"),
+      icon: Rocket,
+    },
+    {
+      number: 100,
+      suffix: "%",
+      label: t("about.stats.satisfaction"),
+      icon: Heart,
+    },
+    { number: 1000, suffix: "+", label: t("about.stats.coffee"), icon: Coffee },
+  ];
+
+  const values = [
+    {
+      title: t("about.values.innovation"),
+      description: t("about.values.innovation.desc"),
+      icon: <Rocket size={32} weight="fill" />,
+    },
+    {
+      title: t("about.values.design"),
+      description: t("about.values.design.desc"),
+      icon: <PaintBrush size={32} weight="fill" />,
+    },
+    {
+      title: t("about.values.code"),
+      description: t("about.values.code.desc"),
+      icon: <Laptop size={32} weight="fill" />,
+    },
+    {
+      title: t("about.values.learning"),
+      description: t("about.values.learning.desc"),
+      icon: <BookOpen size={32} weight="fill" />,
+    },
+  ];
 
   // Função para lidar com o clique no botão "Say Hello"
   const handleContactClick = () => {
@@ -96,7 +104,7 @@ export function About() {
           <div className="flex items-center gap-2 xs:gap-3">
             <div className="w-2 h-2 bg-[#0a0908] rounded-full animate-pulse"></div>
             <span className="font-body font-corporate-medium tracking-wide-corporate text-xs xs:text-sm">
-              Redirecting to contact section...
+              {t("about.notification.redirecting")}
             </span>
           </div>
         </motion.div>
@@ -111,16 +119,15 @@ export function About() {
           className="text-center mb-8 xs:mb-12 sm:mb-16"
         >
           <span className="inline-block px-3 py-1.5 xs:px-4 xs:py-2 rounded-full bg-[#22333b]/40 border border-[#5e503f]/50 text-[#c6ac8f] text-xs xs:text-sm font-medium mb-3 xs:mb-4">
-            Get to know me
+            {t("about.subtitle")}
           </span>
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-corporate-semibold mb-4 xs:mb-6 tracking-tight-corporate leading-tight">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5e503f] to-[#eae0d5]">
-              About Me
+              {t("about.title")}
             </span>
           </h2>
           <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#eae0d5]/70 max-w-xs xs:max-w-lg sm:max-w-2xl md:max-w-3xl mx-auto font-body font-corporate-normal tracking-normal-corporate leading-relaxed px-2 xs:px-0">
-            Passionate developer with a love for creating digital experiences
-            that make a difference
+            {t("about.description")}
           </p>
         </motion.div>
 
@@ -135,10 +142,10 @@ export function About() {
           <div className="w-full max-w-md mx-auto lg:max-w-none lg:mx-0">
             <ProfileCard
               name="Gabriel Glatz"
-              title="Software Developer"
+              title={t("hero.title")}
               handle="glatztp"
-              status="Available for work"
-              contactText="Say Hello"
+              status={t("about.hello.feedback")}
+              contactText={t("about.hello.button")}
               avatarUrl={profileBg}
               showUserInfo={true}
               enableTilt={true}
@@ -152,24 +159,12 @@ export function About() {
             {/* Main Description */}
             <div className="relative bg-[#22333b]/60 backdrop-blur-sm rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 border border-[#5e503f]/50">
               <h3 className="text-lg xs:text-xl sm:text-2xl font-heading font-corporate-semibold text-[#eae0d5] mb-3 xs:mb-4 tracking-tight-corporate">
-                Hello! I'm Gabriel Glatz
+                {t("hero.greeting")} Gabriel Glatz
               </h3>
               <div className="space-y-3 xs:space-y-4 text-[#eae0d5]/80 leading-relaxed font-body font-corporate-normal tracking-normal-corporate">
+                <p className="text-sm xs:text-base">{t("about.description")}</p>
                 <p className="text-sm xs:text-base">
-                  I'm a passionate{" "}
-                  <strong className="text-[#c6ac8f]">Software Developer</strong>{" "}
-                  with over 2 year of experience creating digital solutions that
-                  combine functionality with stunning design.
-                </p>
-                <p className="text-sm xs:text-base">
-                  My journey began with curiosity about how websites work, and
-                  it has evolved into a deep passion for crafting user
-                  experiences that are both beautiful and functional.
-                </p>
-                <p className="text-sm xs:text-base">
-                  When I'm not coding, you'll find me exploring new
-                  technologies, contributing to open-source projects, or sharing
-                  knowledge with the developer community.
+                  {t("about.description2")}
                 </p>
               </div>
             </div>
@@ -228,7 +223,7 @@ export function About() {
         >
           <h3 className="text-xl xs:text-2xl sm:text-3xl font-heading font-corporate-semibold text-center mb-6 xs:mb-8 sm:mb-12 tracking-tight-corporate">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5e503f] to-[#eae0d5]">
-              My Values
+              {t("about.values.title")}
             </span>
           </h3>
 

@@ -1,4 +1,4 @@
-# Gabriel Latz - Portfolio
+# Gabriel Glatz - Portfolio
 
 Um portfólio moderno e responsivo desenvolvido com React, TypeScript e Framer Motion, apresentando design elegante e animações fluidas.
 
@@ -158,10 +158,10 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 ## Contato
 
-Gabriel Latz - [Seu Email] - [Suas Redes Sociais]
+Gabriel Glatz - [Seu Email] - [Suas Redes Sociais]
 
 Link do Projeto: [https://github.com/glatztp/Profile](https://github.com/glatztp/Profile)
 
 ---
 
-Desenvolvido com React e TypeScript por Gabriel Latz
+Desenvolvido com React e TypeScript por Gabriel Glatz

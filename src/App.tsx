@@ -8,6 +8,7 @@ import { Contact } from "./components/Contact";
 import Footer from "./components/Footer";
 import FaultyTerminal from "./components/animations/FaultyTerminal";
 import LoadingScreen from "./components/animations/LoadingScreen";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   pageTransition,
@@ -37,7 +38,7 @@ function App() {
   };
 
   return (
-    <>
+    <LanguageProvider>
       <LoadingScreen isVisible={isLoading} onComplete={handleLoadingComplete} />
 
       <AnimatePresence>
@@ -98,7 +99,7 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </LanguageProvider>
   );
 }
 

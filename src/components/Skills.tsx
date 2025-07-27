@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Code, GearSix, PaintBrush } from "phosphor-react";
 import { useState } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
 import {
   SiReact,
   SiTypescript,
@@ -142,6 +143,7 @@ const skillCategories = [
 
 export function Skills() {
   const [activeCategory, setActiveCategory] = useState(0);
+  const { t } = useLanguage();
 
   return (
     <section
@@ -165,7 +167,7 @@ export function Skills() {
               color: "#eae0d5",
             }}
           >
-            My expertise
+            {t("skills.subtitle")}
           </span>
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-corporate-semibold mb-4 xs:mb-6 tracking-tight-corporate leading-tight">
             <span
@@ -174,14 +176,14 @@ export function Skills() {
                 backgroundImage: "linear-gradient(90deg, #c6ac8f, #5e503f)",
               }}
             >
-              Skills & Technologies
+              {t("skills.title")}
             </span>
           </h2>
           <p
             className="text-sm xs:text-base sm:text-lg md:text-xl max-w-xs xs:max-w-lg sm:max-w-2xl md:max-w-3xl mx-auto font-body font-corporate-normal tracking-normal-corporate px-2 xs:px-0"
             style={{ color: "#eae0d5cc" }}
           >
-            A comprehensive toolkit for creating exceptional digital experiences
+            {t("skills.description")}
           </p>
         </motion.div>
 
@@ -220,9 +222,21 @@ export function Skills() {
                 className="px-3 py-2 xs:px-4 xs:py-2.5 sm:px-6 sm:py-3 rounded-full font-body font-corporate-medium transition-all duration-300 flex items-center gap-1 xs:gap-2 tracking-wide-corporate text-xs xs:text-sm whitespace-nowrap"
               >
                 <span className="text-sm xs:text-base">{category.icon}</span>
-                <span className="hidden xs:inline">{category.title}</span>
+                <span className="hidden xs:inline">
+                  {t(
+                    `skills.categories.${category.title
+                      .toLowerCase()
+                      .replace(" & ", "_")}`
+                  )}
+                </span>
                 <span className="xs:hidden">
-                  {category.title.split(" ")[0]}
+                  {
+                    t(
+                      `skills.categories.${category.title
+                        .toLowerCase()
+                        .replace(" & ", "_")}`
+                    ).split(" ")[0]
+                  }
                 </span>
               </button>
             ))}

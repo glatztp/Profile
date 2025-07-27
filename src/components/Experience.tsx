@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "../contexts/LanguageContext";
 import {
   CalendarCheck,
   MapPin,
@@ -10,65 +11,64 @@ import {
   Globe,
 } from "phosphor-react";
 
-const experiences = [
-  {
-    id: 1,
-    title: "Systems Developer",
-    company: "Grupo Malwee",
-    location: "Jaraguá do Sul, BR",
-    period: "2024 - current",
-    type: "Apprenticeship",
-    description:
-      "Working as a systems developer within the technology department, contributing to the development and maintenance of internal software solutions. Collaborating with multidisciplinary teams on both front-end and back-end projects with a focus on clean code, accessibility, and performance.",
-    achievements: [
-      "Delivered real-world features in a corporate production environment",
-      "Worked with agile methodologies and version control practices",
-      "Actively contributed to internal system modernization projects",
-    ],
-    technologies: ["React", "Tailwind CSS", "TypeScript", "Node.js", "SQL"],
-    current: true,
-    icon: Code,
-  },
-  {
-    id: 4,
-    title: "Freelance Web Developer",
-    company: "Self-Employed",
-    location: "Remote",
-    period: "2025 - current",
-    type: "Freelance",
-    description:
-      "Provided web development services to small businesses, creating custom websites and e-commerce solutions.",
-    achievements: [
-      "Completed 4+ freelance projects successfully",
-      "Built strong client relationships with 95% retention rate",
-      "Developed expertise in various web technologies",
-    ],
-    technologies: ["WordPress", "HTML", "CSS", "JavaScript"],
-    current: false,
-    icon: Globe,
-  },
-];
-
-const education = [
-  {
-    id: 1,
-    title: "Industrial Information Systems Program (PSII V1)",
-    institution: "SENAI",
-    location: "Jaraguá do Sul, BR",
-    period: "2024 - current",
-    type: "Technical Degree",
-    description:
-      "Technical course focused on software development and industrial automation, with emphasis on modern languages, system integration, and software engineering practices.",
-    achievements: [
-      "Developed real-world integrative projects for industrial applications",
-      "Completed over 1200 hours of hands-on technical training",
-      "Recognized for strong performance in programming and web development",
-    ],
-    icon: GraduationCap,
-  },
-];
-
 export function Experience() {
+  const { t } = useLanguage();
+
+  const experiences = [
+    {
+      id: 1,
+      title: t("experience.jobs.malwee.title"),
+      company: t("experience.jobs.malwee.company"),
+      location: t("experience.jobs.malwee.location"),
+      period: t("experience.jobs.malwee.period"),
+      type: t("experience.jobs.malwee.type"),
+      description: t("experience.jobs.malwee.description"),
+      achievements: [
+        t("experience.jobs.malwee.achievements.0"),
+        t("experience.jobs.malwee.achievements.1"),
+        t("experience.jobs.malwee.achievements.2"),
+      ],
+      technologies: ["React", "Tailwind CSS", "TypeScript", "Node.js", "SQL"],
+      current: true,
+      icon: Code,
+    },
+    {
+      id: 4,
+      title: t("experience.jobs.freelance.title"),
+      company: t("experience.jobs.freelance.company"),
+      location: t("experience.jobs.freelance.location"),
+      period: t("experience.jobs.freelance.period"),
+      type: t("experience.jobs.freelance.type"),
+      description: t("experience.jobs.freelance.description"),
+      achievements: [
+        t("experience.jobs.freelance.achievements.0"),
+        t("experience.jobs.freelance.achievements.1"),
+        t("experience.jobs.freelance.achievements.2"),
+      ],
+      technologies: ["WordPress", "HTML", "CSS", "JavaScript"],
+      current: false,
+      icon: Globe,
+    },
+  ];
+
+  const education = [
+    {
+      id: 1,
+      title: t("experience.education.senai.title"),
+      institution: t("experience.education.senai.institution"),
+      location: t("experience.education.senai.location"),
+      period: t("experience.education.senai.period"),
+      type: t("experience.education.senai.type"),
+      description: t("experience.education.senai.description"),
+      achievements: [
+        t("experience.education.senai.achievements.0"),
+        t("experience.education.senai.achievements.1"),
+        t("experience.education.senai.achievements.2"),
+      ],
+      icon: GraduationCap,
+    },
+  ];
+
   return (
     <section
       id="experience"
@@ -102,7 +102,7 @@ export function Experience() {
             className="inline-flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full bg-gradient-to-r from-[#c6ac8f]/20 to-[#5e503f]/20 border border-[#c6ac8f]/30 text-[#c6ac8f] text-xs sm:text-sm font-medium mb-4 sm:mb-6 backdrop-blur-sm"
           >
             <TrendUp size={14} className="sm:w-4 sm:h-4" />
-            My Professional Journey
+            {t("experience.subtitle")}
           </motion.span>
 
           <motion.h2
@@ -112,10 +112,8 @@ export function Experience() {
             className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold mb-4 sm:mb-6 leading-tight"
           >
             <span className="bg-gradient-to-r from-[#c6ac8f] via-[#eae0d5] to-[#5e503f] bg-clip-text text-transparent">
-              Experience &
+              {t("experience.title")}
             </span>
-            <br />
-            <span className="text-[#eae0d5]">Education</span>
           </motion.h2>
 
           <motion.p
@@ -124,8 +122,7 @@ export function Experience() {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-sm sm:text-base md:text-lg lg:text-xl text-[#eae0d5]/80 max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed px-2"
           >
-            Building expertise through hands-on experience and continuous
-            learning in technology
+            {t("experience.description")}
           </motion.p>
         </motion.div>
 
@@ -144,7 +141,7 @@ export function Experience() {
                 <Briefcase size={20} className="sm:w-6 sm:h-6 text-[#c6ac8f]" />
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-heading font-bold text-[#eae0d5]">
-                Professional Experience
+                {t("experience.sections.work")}
               </h3>
             </div>
 
@@ -228,7 +225,7 @@ export function Experience() {
                                 className="sm:w-3 sm:h-3"
                                 weight="fill"
                               />
-                              Current
+                              {t("experience.current")}
                             </motion.span>
                           )}
                         </div>
@@ -260,7 +257,7 @@ export function Experience() {
                         <div className="mb-6">
                           <h5 className="text-[#eae0d5] font-semibold mb-3 flex items-center gap-2">
                             <Star size={16} className="text-[#c6ac8f]" />
-                            Key Achievements
+                            {t("experience.highlights")}
                           </h5>
                           <ul className="space-y-2">
                             {exp.achievements.map((achievement, idx) => (
@@ -313,7 +310,7 @@ export function Experience() {
                 <GraduationCap size={24} className="text-[#c6ac8f]" />
               </div>
               <h3 className="text-2xl md:text-3xl font-heading font-bold text-[#eae0d5]">
-                Education
+                {t("experience.sections.education")}
               </h3>
             </div>
 
@@ -381,7 +378,7 @@ export function Experience() {
                       <div>
                         <h5 className="text-[#eae0d5] font-semibold mb-3 flex items-center gap-2">
                           <Star size={16} className="text-[#c6ac8f]" />
-                          Highlights
+                          {t("experience.highlights")}
                         </h5>
                         <ul className="space-y-2">
                           {edu.achievements.map((achievement, idx) => (
@@ -413,13 +410,10 @@ export function Experience() {
             >
               <h4 className="text-lg font-heading font-bold text-[#eae0d5] mb-4 flex items-center gap-2">
                 <TrendUp size={18} className="text-[#c6ac8f]" />
-                Continuous Learning
+                {t("experience.continuousLearning")}
               </h4>
               <p className="text-[#eae0d5]/70 text-sm leading-relaxed">
-                Always expanding my knowledge through online courses,
-                certifications, and hands-on projects. Currently focusing on
-                advanced React patterns, cloud technologies, and modern
-                development practices.
+                {t("experience.continuousLearningDescription")}
               </p>
             </motion.div>
           </motion.div>

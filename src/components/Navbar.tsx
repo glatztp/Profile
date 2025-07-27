@@ -2,21 +2,24 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { List, X } from "phosphor-react";
 import { fadeInDown, staggerContainer } from "../utils/animations";
-
-const navItems = [
-  { label: "Home", id: "home" },
-  { label: "About", id: "about" },
-  { label: "Skills", id: "skills" },
-  { label: "Portfolio", id: "portfolio" },
-  { label: "Experience", id: "experience" },
-  { label: "Contact", id: "contact" },
-];
+import { LanguageSwitch } from "./LanguageSwitch";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export function Navbar() {
+  const { t } = useLanguage();
   const [active, setActive] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  const navItems = [
+    { label: t("nav.home"), id: "home" },
+    { label: t("nav.about"), id: "about" },
+    { label: t("nav.skills"), id: "skills" },
+    { label: t("nav.portfolio"), id: "portfolio" },
+    { label: t("nav.experience"), id: "experience" },
+    { label: t("nav.contact"), id: "contact" },
+  ];
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -113,8 +116,17 @@ export function Navbar() {
           ))}
         </motion.div>
 
+        {/* Language Switch */}
+        <motion.div variants={fadeInDown} className="hidden md:block">
+          <LanguageSwitch />
+        </motion.div>
+
         {/* Mobile menu button */}
-        <motion.div className="md:hidden" variants={fadeInDown}>
+        <motion.div
+          className="md:hidden flex items-center gap-2"
+          variants={fadeInDown}
+        >
+          <LanguageSwitch />
           <motion.button
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menu"

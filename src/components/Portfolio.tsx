@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { GithubLogo, Eye, Link } from "phosphor-react";
+import { useLanguage } from "../contexts/LanguageContext";
 import CardSwap, { Card } from "./animations/CardSwap";
 
 interface Project {
@@ -64,6 +65,8 @@ const projects: Project[] = [
 ];
 
 export function Portfolio() {
+  const { t } = useLanguage();
+
   return (
     <section id="portfolio" className="py-20 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
@@ -82,7 +85,7 @@ export function Portfolio() {
               color: "#5e503f",
             }}
           >
-            My work
+            {t("portfolio.subtitle")}
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span
@@ -91,12 +94,11 @@ export function Portfolio() {
                 backgroundImage: "linear-gradient(90deg, #c6ac8f, #5e503f)",
               }}
             >
-              Featured Projects
+              {t("portfolio.title")}
             </span>
           </h2>
           <p className="text-xl max-w-3xl mx-auto" style={{ color: "#786c60" }}>
-            A collection of projects showcasing my skills in modern web
-            development
+            {t("portfolio.description")}
           </p>
         </motion.div>
 
@@ -150,7 +152,7 @@ export function Portfolio() {
                         className="flex items-center gap-1 text-sm font-semibold"
                         style={{ color: "#c6ac8f" }}
                       >
-                        <Eye size={16} /> Live
+                        <Eye size={16} /> {t("portfolio.buttons.live")}
                       </a>
                     )}
                     <a
@@ -160,7 +162,7 @@ export function Portfolio() {
                       className="flex items-center gap-1 text-sm font-semibold"
                       style={{ color: "#786c60" }}
                     >
-                      <GithubLogo size={16} /> Code
+                      <GithubLogo size={16} /> {t("portfolio.buttons.code")}
                     </a>
                   </div>
                 </div>
@@ -177,7 +179,7 @@ export function Portfolio() {
           className="text-center mt-16"
         >
           <p style={{ color: "#786c60" }} className="mb-6">
-            Interested in working together or want to see more of my work?
+            {t("portfolio.cta.text")}
           </p>
           <motion.a
             href="#contact"
@@ -190,7 +192,7 @@ export function Portfolio() {
               boxShadow: "0 4px 14px rgba(198,172,143,0.5)",
             }}
           >
-            Let's Work Together
+            {t("portfolio.cta.button")}
             <Link size={20} />
           </motion.a>
         </motion.div>

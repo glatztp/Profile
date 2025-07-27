@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, GithubLogo, LinkedinLogo } from "phosphor-react";
 import SplitText from "./animations/SplitText";
+import { useLanguage } from "../contexts/LanguageContext";
 import {
   fadeInUp,
   fadeInDown,
@@ -10,6 +11,7 @@ import {
 } from "../utils/animations";
 
 export function Hero() {
+  const { t } = useLanguage();
   return (
     <motion.section
       id="home"
@@ -26,7 +28,7 @@ export function Hero() {
             variants={scaleIn}
           >
             <span className="text-[#c6ac8f] text-xs sm:text-sm md:text-base font-body font-corporate-medium tracking-wide-corporate">
-              Welcome to my digital world
+              {t("hero.greeting")}
             </span>
           </motion.div>
         </motion.div>
@@ -36,7 +38,7 @@ export function Hero() {
           variants={fadeInUp}
         >
           <SplitText
-            text="Gabriel Glatz"
+            text={t("hero.name")}
             delay={100}
             duration={0.6}
             ease="power3.out"
@@ -54,17 +56,15 @@ export function Hero() {
           className="block text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#eae0d5]/80 font-body font-corporate-light mt-1 sm:mt-2 mb-6 sm:mb-8 md:mb-10 tracking-wide-corporate"
         >
           <span className="text-gradient bg-gradient-to-r from-[#c6ac8f] via-[#eae0d5] to-[#c6ac8f] bg-clip-text text-transparent">
-            Software Developer
+            {t("hero.title")}
           </span>
         </motion.span>
 
         <motion.p
           variants={fadeInUp}
-          className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-xl text-[#eae0d5]/70 max-w-xs xs:max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-10 leading-relaxed font-body font-corporate-normal tracking-normal-corporate px-1 sm:px-2"
+          className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-xl text-[#eae0d5]/70 max-w-xs xs:max-w-sm sm:max-w-md md:max-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-10 leading-relaxed font-body font-corporate-normal tracking-normal-corporate px-1 sm:px-2"
         >
-          I craft digital experiences that blend innovative design with powerful
-          functionality. Transforming ideas into scalable, user-centric
-          applications with modern technologies.
+          {t("hero.description")}
         </motion.p>
 
         <motion.div
@@ -85,7 +85,7 @@ export function Hero() {
               className="absolute inset-0 bg-gradient-to-r from-[#eae0d5] to-[#c6ac8f] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               initial={false}
             />
-            <span className="relative z-10">View My Work</span>
+            <span className="relative z-10">{t("hero.cta")}</span>
             <ArrowRight
               size={16}
               className="group-hover:translate-x-1 transition-transform relative z-10 xs:w-4 xs:h-4 sm:w-5 sm:h-5"
