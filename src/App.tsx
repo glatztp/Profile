@@ -20,6 +20,19 @@ import { useState, useEffect } from "react";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     // Preload crítico - reduzido o delay
@@ -49,34 +62,36 @@ function App() {
             variants={pageTransition}
             className="relative min-h-screen"
           >
-            {/* FaultyTerminal Background Fixed */}
-            <motion.div
-              className="fixed inset-0 z-0 pointer-events-none"
-              variants={terminalReveal}
-              initial="initial"
-              animate="animate"
-            >
-              <FaultyTerminal
-                scale={1.5}
-                gridMul={[2, 1]}
-                digitSize={1.2}
-                timeScale={0.5}
-                pause={false}
-                scanlineIntensity={0.6}
-                glitchAmount={0.8}
-                flickerAmount={0.9}
-                noiseAmp={0.7}
-                chromaticAberration={0}
-                dither={0.4}
-                curvature={0.05}
-                tint="#c6ac8f"
-                mouseReact={false}
-                mouseStrength={0.3}
-                pageLoadAnimation={true}
-                brightness={0.08}
-                className="faulty-terminal-container pointer-events-auto"
-              />
-            </motion.div>
+            {/* FaultyTerminal Background Fixed - Hidden on mobile */}
+            {!isMobile && (
+              <motion.div
+                className="fixed inset-0 z-0 pointer-events-none hidden md:block"
+                variants={terminalReveal}
+                initial="initial"
+                animate="animate"
+              >
+                <FaultyTerminal
+                  scale={1.5}
+                  gridMul={[2, 1]}
+                  digitSize={1.2}
+                  timeScale={0.5}
+                  pause={false}
+                  scanlineIntensity={0.6}
+                  glitchAmount={0.8}
+                  flickerAmount={0.9}
+                  noiseAmp={0.7}
+                  chromaticAberration={0}
+                  dither={0.4}
+                  curvature={0.05}
+                  tint="#c6ac8f"
+                  mouseReact={false}
+                  mouseStrength={0.3}
+                  pageLoadAnimation={true}
+                  brightness={0.08}
+                  className="faulty-terminal-container pointer-events-auto"
+                />
+              </motion.div>
+            )}
 
             {/* Conteúdo da aplicação */}
             <motion.div
