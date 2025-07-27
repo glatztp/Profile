@@ -2,12 +2,16 @@ import React, { useEffect, useRef, useCallback, useMemo } from "react";
 
 type ProfileCardProps = {
   avatarUrl?: string;
+  iconUrl?: string;
+  icon?: React.ReactNode; // Novo: para ícones do Phosphor React
   grainUrl?: string;
   behindGradient?: string;
   innerGradient?: string;
   showBehindGradient?: boolean;
   className?: string;
   enableTilt?: boolean;
+  enableMobileTilt?: boolean;
+  mobileTiltSensitivity?: number;
   miniAvatarUrl?: string;
   name?: string;
   title?: string;
@@ -15,12 +19,11 @@ type ProfileCardProps = {
   status?: string;
   contactText?: string;
   showUserInfo?: boolean;
-  icon?: React.ReactNode;
   onContactClick?: () => void;
 };
 
 const DEFAULT_BEHIND_GRADIENT =
-  "radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(36,60%,85%,var(--card-opacity)) 4%,hsla(36,40%,75%,calc(var(--card-opacity)*0.75)) 10%,hsla(36,30%,60%,calc(var(--card-opacity)*0.5)) 50%,hsla(36,10%,40%,0) 100%),radial-gradient(35% 52% at 55% 20%,#c6ac8faa 0%,#0a090800 100%),radial-gradient(100% 100% at 50% 50%,#eae0d5ff 1%,#22333b00 76%),conic-gradient(from 124deg at 50% 50%,#5e503f 0%,#c6ac8f 40%,#c6ac8f 60%,#5e503f 100%)";
+  "radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(36,60%,85%,var(--card-opacity)) 4%,hsla(36,40%,75%,calc(var(--card-opacity)*0.5)) 10%,hsla(36,30%,60%,calc(var(--card-opacity)*0.3)) 50%,hsla(36,10%,40%,0) 100%),radial-gradient(35% 52% at 55% 20%,#c6ac8f66 0%,#0a090800 100%),radial-gradient(100% 100% at 50% 50%,#eae0d5cc 1%,#22333b00 76%),conic-gradient(from 124deg at 50% 50%,#5e503f 0%,#c6ac8f 40%,#c6ac8f 60%,#5e503f 100%)";
 
 const DEFAULT_INNER_GRADIENT =
   "linear-gradient(145deg, #5e503f88 0%, #c6ac8f44 100%)";
@@ -30,6 +33,7 @@ const ANIMATION_CONFIG = {
   INITIAL_DURATION: 1500,
   INITIAL_X_OFFSET: 70,
   INITIAL_Y_OFFSET: 60,
+  DEVICE_BETA_OFFSET: 20,
 } as const;
 
 const clamp = (value: number, min = 0, max = 100): number =>
@@ -52,13 +56,16 @@ const easeInOutCubic = (x: number): number =>
 
 const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   avatarUrl = "<Placeholder for avatar URL>",
-  icon = null, // novo padrão
+  iconUrl = "<Placeholder for icon URL>",
+  icon = null,
   grainUrl = "<Placeholder for grain URL>",
   behindGradient,
   innerGradient,
   showBehindGradient = true,
   className = "",
   enableTilt = true,
+  enableMobileTilt = false,
+  mobileTiltSensitivity = 5,
   miniAvatarUrl,
   name = "Javi A. Torres",
   title = "Software Engineer",
@@ -202,6 +209,27 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     [animationHandlers]
   );
 
+  const handleDeviceOrientation = useCallback(
+    (event: DeviceOrientationEvent) => {
+      const card = cardRef.current;
+      const wrap = wrapRef.current;
+
+      if (!card || !wrap || !animationHandlers) return;
+
+      const { beta, gamma } = event;
+      if (!beta || !gamma) return;
+
+      animationHandlers.updateCardTransform(
+        card.clientHeight / 2 + gamma * mobileTiltSensitivity,
+        card.clientWidth / 2 +
+          (beta - ANIMATION_CONFIG.DEVICE_BETA_OFFSET) * mobileTiltSensitivity,
+        card,
+        wrap
+      );
+    },
+    [animationHandlers, mobileTiltSensitivity]
+  );
+
   useEffect(() => {
     if (!enableTilt || !animationHandlers) return;
 
@@ -213,10 +241,34 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     const pointerMoveHandler = handlePointerMove as EventListener;
     const pointerEnterHandler = handlePointerEnter as EventListener;
     const pointerLeaveHandler = handlePointerLeave as EventListener;
+    const deviceOrientationHandler = handleDeviceOrientation as EventListener;
+
+    const handleClick = () => {
+      if (!enableMobileTilt || location.protocol !== "https:") return;
+      if (
+        typeof (window.DeviceMotionEvent as any).requestPermission ===
+        "function"
+      ) {
+        (window.DeviceMotionEvent as any)
+          .requestPermission()
+          .then((state: string) => {
+            if (state === "granted") {
+              window.addEventListener(
+                "deviceorientation",
+                deviceOrientationHandler
+              );
+            }
+          })
+          .catch((err: any) => console.error(err));
+      } else {
+        window.addEventListener("deviceorientation", deviceOrientationHandler);
+      }
+    };
 
     card.addEventListener("pointerenter", pointerEnterHandler);
     card.addEventListener("pointermove", pointerMoveHandler);
     card.addEventListener("pointerleave", pointerLeaveHandler);
+    card.addEventListener("click", handleClick);
 
     const initialX = wrap.clientWidth - ANIMATION_CONFIG.INITIAL_X_OFFSET;
     const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
@@ -234,26 +286,31 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       card.removeEventListener("pointerenter", pointerEnterHandler);
       card.removeEventListener("pointermove", pointerMoveHandler);
       card.removeEventListener("pointerleave", pointerLeaveHandler);
+      card.removeEventListener("click", handleClick);
+      window.removeEventListener("deviceorientation", deviceOrientationHandler);
       animationHandlers.cancelAnimation();
     };
   }, [
     enableTilt,
+    enableMobileTilt,
     animationHandlers,
     handlePointerMove,
     handlePointerEnter,
     handlePointerLeave,
+    handleDeviceOrientation,
   ]);
 
   const cardStyle = useMemo(
     () =>
       ({
+        "--icon": iconUrl ? `url(${iconUrl})` : "none",
         "--grain": grainUrl ? `url(${grainUrl})` : "none",
         "--behind-gradient": showBehindGradient
           ? behindGradient ?? DEFAULT_BEHIND_GRADIENT
           : "none",
         "--inner-gradient": innerGradient ?? DEFAULT_INNER_GRADIENT,
       } as React.CSSProperties),
-    [grainUrl, showBehindGradient, behindGradient, innerGradient]
+    [iconUrl, grainUrl, showBehindGradient, behindGradient, innerGradient]
   );
 
   const handleContactClick = useCallback(() => {
@@ -321,12 +378,12 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                     />
                   </div>
                   <div className="pc-user-text">
-                    <div className="pc-handle font-heading">@{handle}</div>
-                    <div className="pc-status font-body">{status}</div>
+                    <div className="pc-handle">@{handle}</div>
+                    <div className="pc-status">{status}</div>
                   </div>
                 </div>
                 <button
-                  className="pc-contact-btn font-subheading"
+                  className="pc-contact-btn"
                   onClick={handleContactClick}
                   style={{ pointerEvents: "auto" }}
                   type="button"
@@ -339,8 +396,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
           </div>
           <div className="pc-content">
             <div className="pc-details">
-              <h3 className="font-heading">{name}</h3>
-              <p className="font-body-semibold">{title}</p>
+              <h3>{name}</h3>
+              <p>{title}</p>
             </div>
           </div>
         </div>

@@ -101,10 +101,10 @@ export function About() {
 
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          viewport={{ once: true, margin: "-50px" }}
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-2 rounded-full bg-[#22333b]/40 border border-[#5e503f]/50 text-[#c6ac8f] text-sm font-medium mb-4">
@@ -122,13 +122,13 @@ export function About() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="grid lg:grid-cols-3 gap-8 mb-20"
+          transition={{ duration: 0.4 }}
+          viewport={{ once: true}}
+          className="grid lg:grid-cols-3 gap-10 mb-20"
         >
-          <div className="lg:col-span-1">
+          <div>
             <ProfileCard
               name="Gabriel Glatz"
               title="Software Developer"
@@ -150,8 +150,10 @@ export function About() {
               </h3>
               <div className="space-y-4 text-[#eae0d5]/80 leading-relaxed font-body font-corporate-normal tracking-normal-corporate">
                 <p>
-                  I'm a passionate <strong className="text-[#c6ac8f]">Software Developer</strong> with over 2 year of experience
-                  creating digital solutions that combine functionality with stunning design.
+                  I'm a passionate{" "}
+                  <strong className="text-[#c6ac8f]">Software Developer</strong>{" "}
+                  with over 2 year of experience creating digital solutions that
+                  combine functionality with stunning design.
                 </p>
                 <p>
                   My journey began with curiosity about how websites work, and
@@ -172,7 +174,8 @@ export function About() {
                 return (
                   <motion.div
                     key={index}
-                    whileHover={{ scale: 1.05, y: -5 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    transition={{ duration: 0.2 }}
                     onHoverStart={() => setHoveredStat(index)}
                     onHoverEnd={() => setHoveredStat(null)}
                     className="relative group"
@@ -226,11 +229,11 @@ export function About() {
             {values.map((value, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                viewport={{ once: true, margin: "-50px" }}
+                whileHover={{ scale: 1.02, y: -2 }}
                 className="group"
               >
                 <div className="relative">

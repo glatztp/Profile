@@ -27,7 +27,7 @@ export function Hero() {
             variants={scaleIn}
           >
             <span className="text-[#c6ac8f] text-sm font-body font-corporate-medium tracking-wide-corporate">
-              ✨ Welcome to my digital world
+               Welcome to my digital world
             </span>
           </motion.div>
         </motion.div>

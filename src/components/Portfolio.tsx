@@ -49,6 +49,18 @@ const projects: Project[] = [
     github: "https://github.com/glatztp/Chat-bot",
     live: "https://chat-bot-sooty-ten.vercel.app/",
   },
+  {
+    id: 4,
+    title: "gltzUI - React Component Library",
+    description:
+      "Biblioteca moderna de 50+ componentes React com TypeScript, Tailwind CSS e Framer Motion. Sistema de temas avançado, dark mode nativo, acessibilidade WCAG 2.1, e performance otimizada para produção.",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    category: "UI Library",
+    github: "https://github.com/glatztp/gltz",
+    live: "https://gltz.vercel.app/",
+  },
 ];
 
 export function Portfolio() {

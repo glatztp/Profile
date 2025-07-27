@@ -21,16 +21,19 @@ function App() {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    // Simular carregamento inicial
+    // Preload crítico - reduzido o delay
     const timer = setTimeout(() => {
       setShowContent(true);
-    }, 100);
+    }, 50); // Reduzido de 100 para 50
 
     return () => clearTimeout(timer);
   }, []);
 
   const handleLoadingComplete = () => {
-    setIsLoading(false);
+    // Adicionar um delay mínimo para suavizar a transição
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 150);
   };
 
   return (
@@ -66,7 +69,7 @@ function App() {
                 dither={0.4}
                 curvature={0.05}
                 tint="#c6ac8f"
-                mouseReact={true}
+                mouseReact={false}
                 mouseStrength={0.3}
                 pageLoadAnimation={true}
                 brightness={0.08}
