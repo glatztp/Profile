@@ -9,10 +9,6 @@ import {
   floatingAnimation,
 } from "../utils/animations";
 
-const handleAnimationComplete = () => {
-  console.log("All letters have animated!");
-};
-
 export function Hero() {
   return (
     <motion.section
@@ -50,7 +46,6 @@ export function Hero() {
             threshold={0.1}
             rootMargin="-100px"
             textAlign="center"
-            onLetterAnimationComplete={handleAnimationComplete}
           />
         </motion.span>
 
@@ -153,7 +148,7 @@ export function Hero() {
           <motion.span
             className="text-xs xs:text-xs sm:text-sm"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0.6, 1, 0.6] }} 
+            animate={{ opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             Scroll to explore
