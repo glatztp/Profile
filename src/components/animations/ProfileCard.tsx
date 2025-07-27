@@ -15,7 +15,7 @@ type ProfileCardProps = {
   status?: string;
   contactText?: string;
   showUserInfo?: boolean;
-  icon?: React.ReactNode; 
+  icon?: React.ReactNode;
   onContactClick?: () => void;
 };
 
@@ -96,7 +96,11 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
         "--pointer-y": `${percentY}%`,
         "--background-x": `${adjust(percentX, 0, 100, 35, 65)}%`,
         "--background-y": `${adjust(percentY, 0, 100, 35, 65)}%`,
-        "--pointer-from-center": `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
+        "--pointer-from-center": `${clamp(
+          Math.hypot(percentY - 50, percentX - 50) / 50,
+          0,
+          1
+        )}`,
         "--pointer-from-top": `${percentY / 100}`,
         "--pointer-from-left": `${percentX / 100}`,
         "--rotate-x": `${round(-(centerX / 5))}deg`,
@@ -243,17 +247,40 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   const cardStyle = useMemo(
     () =>
       ({
-        "--icon": icon ? `url(${icon})` : "none",
         "--grain": grainUrl ? `url(${grainUrl})` : "none",
         "--behind-gradient": showBehindGradient
-          ? (behindGradient ?? DEFAULT_BEHIND_GRADIENT)
+          ? behindGradient ?? DEFAULT_BEHIND_GRADIENT
           : "none",
         "--inner-gradient": innerGradient ?? DEFAULT_INNER_GRADIENT,
-      }) as React.CSSProperties,
-    [icon, grainUrl, showBehindGradient, behindGradient, innerGradient]
+      } as React.CSSProperties),
+    [grainUrl, showBehindGradient, behindGradient, innerGradient]
   );
 
   const handleContactClick = useCallback(() => {
+    const button = document.querySelector(".pc-contact-btn");
+
+    // Adiciona múltiplos efeitos de feedback
+    if (button) {
+      // Efeito de bounce
+      button.classList.add("animate-bounce");
+
+      // Adiciona um efeito de pulse para simular haptic feedback
+      setTimeout(() => {
+        button.classList.remove("animate-bounce");
+        button.classList.add("animate-pulse");
+
+        setTimeout(() => {
+          button.classList.remove("animate-pulse");
+        }, 200);
+      }, 300);
+    }
+
+    // Simula feedback haptic (vibração) em dispositivos móveis
+    if ("vibrate" in navigator) {
+      navigator.vibrate([50, 30, 50]);
+    }
+
+    // Chama a função de callback
     onContactClick?.();
   }, [onContactClick]);
 
@@ -294,12 +321,12 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                     />
                   </div>
                   <div className="pc-user-text">
-                    <div className="pc-handle">@{handle}</div>
-                    <div className="pc-status">{status}</div>
+                    <div className="pc-handle font-heading">@{handle}</div>
+                    <div className="pc-status font-body">{status}</div>
                   </div>
                 </div>
                 <button
-                  className="pc-contact-btn"
+                  className="pc-contact-btn font-subheading"
                   onClick={handleContactClick}
                   style={{ pointerEvents: "auto" }}
                   type="button"
@@ -312,8 +339,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
           </div>
           <div className="pc-content">
             <div className="pc-details">
-              <h3>{name}</h3>
-              <p>{title}</p>
+              <h3 className="font-heading">{name}</h3>
+              <p className="font-body-semibold">{title}</p>
             </div>
           </div>
         </div>

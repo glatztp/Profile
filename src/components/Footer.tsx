@@ -51,7 +51,7 @@ export default function Footer() {
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
             <h3 className="text-3xl font-bold mb-4" style={{ background: 'linear-gradient(to right, #c6ac8f, #eae0d5)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Gabriel.glatz</h3>
             <p className="leading-relaxed max-w-md text-[#eae0d5] mb-6">
-              Full-Stack Developer apaixonado por criar experiências digitais excepcionais.
+              Software Developer apaixonado por criar experiências digitais excepcionais.
               Transformando ideias em apps escaláveis e centrados no usuário.
             </p>
             <div className="flex items-center gap-4">
