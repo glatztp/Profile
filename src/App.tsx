@@ -59,10 +59,8 @@ function App() {
           <motion.div
             initial="initial"
             animate="animate"
-            variants={pageTransition}
             className="relative min-h-screen"
           >
-            {/* FaultyTerminal Background Fixed - Hidden on mobile */}
             {!isMobile && (
               <motion.div
                 className="fixed inset-0 z-0 pointer-events-none hidden md:block"
@@ -71,22 +69,22 @@ function App() {
                 animate="animate"
               >
                 <FaultyTerminal
-                  scale={1.5}
+                  scale={1}
                   gridMul={[2, 1]}
-                  digitSize={1.2}
+                  digitSize={1}
                   timeScale={0.5}
                   pause={false}
                   scanlineIntensity={0.6}
                   glitchAmount={0.8}
                   flickerAmount={0.9}
-                  noiseAmp={0.7}
+                  noiseAmp={0.5}
                   chromaticAberration={0}
                   dither={0.4}
-                  curvature={0.05}
+                  curvature={0.15}
                   tint="#c6ac8f"
-                  mouseReact={false}
-                  mouseStrength={0.3}
-                  pageLoadAnimation={true}
+                  mouseReact={true}
+                  mouseStrength={0.1}
+                  pageLoadAnimation={false}
                   brightness={0.08}
                   className="faulty-terminal-container pointer-events-auto"
                 />

@@ -42,15 +42,15 @@ const translations = {
     "about.stats.experience": "Anos de Experiência",
     "about.stats.satisfaction": "Satisfação do Cliente",
     "about.stats.coffee": "Xícaras de Café",
-    "about.values.innovation": "Inovação em Primeiro Lugar",
+    "about.values.innovation": "Inovação em Primeiro",
     "about.values.innovation.desc":
-      "Sempre explorando tecnologias de ponta e soluções criativas para entregar resultados excepcionais.",
-    "about.values.design": "Design Centrado no Usuário",
+      "Sempre explorando tecnologias de ponta e soluções criativas para entregar resultados excepcionais.Constante busca por inovação.",
+    "about.values.design": "Design Centrado",
     "about.values.design.desc":
-      "Cada interface que crio é projetada com a experiência do usuário como prioridade máxima.",
-    "about.values.code": "Código Limpo",
+      "Cada interface que crio é projetada com a experiência do usuário como prioridade máxima.Aprendizado contínuo e adaptação às necessidades do usuário.",
+    "about.values.code": "Código Limpo              ",
     "about.values.code.desc":
-      "Escrevo código sustentável, escalável e bem documentado que resiste ao teste do tempo.",
+      "Escrevo código sustentável, escalável e bem documentado que resiste ao teste do tempo.Prezando pela clareza e manutenção.",
     "about.values.learning": "Aprendizado Contínuo",
     "about.values.learning.desc":
       "Mantendo-me à frente da curva, aprendendo constantemente novas tecnologias e melhores práticas.",

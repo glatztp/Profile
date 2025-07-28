@@ -131,6 +131,13 @@ const skillCategories = [
         iconColor: "#F24E1E",
       },
       {
+        name: "Adobe XD",
+        level: 35,
+        colors: ["#eae0d5", "#c6ac8f"],
+        icon: <svg width="1em" height="1em" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="6" fill="#470137"/><text x="50%" y="55%" textAnchor="middle" fill="#FF61F6" fontSize="14" fontFamily="Arial" fontWeight="bold" dy=".3em">XD</text></svg>,
+        iconColor: "#FF61F6",
+      },
+      {
         name: "JavaScript",
         level: 65,
         colors: ["#5e503f", "#22333b"],
@@ -279,68 +286,28 @@ export function Skills() {
                 {skillCategories[activeCategory].title} Skills
               </h3>
 
-              <div className="grid gap-6">
-                {skillCategories[activeCategory].skills.map((skill, index) => {
-                  const [fromColor, toColor] = skill.colors;
-                  return (
-                    <motion.div
-                      key={skill.name}
-                      initial={{ opacity: 0, x: -30 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="group"
+              <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                {skillCategories[activeCategory].skills.map((skill, index) => (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.08 }}
+                    className="flex flex-col items-center justify-center bg-[rgba(34,51,59,0.18)] rounded-xl p-6 border border-[rgba(34,51,59,0.3)] shadow-md hover:shadow-lg transition-all duration-300"
+                  >
+                    <div className="mb-3">
+                      <span className="text-3xl" style={{ color: skill.iconColor }}>
+                        {skill.icon}
+                      </span>
+                    </div>
+                    <span
+                      style={{ color: "#eae0d5", fontWeight: 500, fontSize: "1.1rem" }}
+                      className="font-body font-corporate-medium tracking-wide-corporate text-center"
                     >
-                      <div className="flex justify-between items-center mb-2">
-                        <div className="flex items-center gap-3">
-                          <div
-                            className="text-xl transition-all duration-300"
-                            style={{ color: skill.iconColor }}
-                          >
-                            {skill.icon}
-                          </div>
-                          <span
-                            style={{ color: "#eae0d5" }}
-                            className="font-body font-corporate-medium tracking-wide-corporate"
-                          >
-                            {skill.name}
-                          </span>
-                        </div>
-                        <span
-                          style={{ color: "#c6ac8f" }}
-                          className="font-heading font-corporate-bold"
-                        >
-                          {skill.level}%
-                        </span>
-                      </div>
-
-                      <div
-                        className="relative h-3 rounded-full overflow-hidden"
-                        style={{ backgroundColor: "#22333b" }}
-                      >
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${skill.level}%` }}
-                          transition={{
-                            duration: 1.5,
-                            delay: index * 0.1,
-                            ease: "easeOut",
-                          }}
-                          className="rounded-full relative h-full"
-                          style={{
-                            background: `linear-gradient(90deg, ${fromColor}, ${toColor})`,
-                          }}
-                        >
-                          <div
-                            className="absolute inset-0 rounded-full animate-pulse"
-                            style={{
-                              backgroundColor: "rgba(234, 224, 213, 0.125)",
-                            }}
-                          ></div>
-                        </motion.div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
+                      {skill.name}
+                    </span>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>

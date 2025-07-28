@@ -8,6 +8,7 @@ import {
   PaintBrush,
   Laptop,
   BookOpen,
+  Medal,
 } from "phosphor-react";
 import CountUp from "./animations/CountUp";
 import ProfileCard from "./animations/ProfileCard";
@@ -30,8 +31,8 @@ export function About() {
     {
       number: 100,
       suffix: "%",
-      label: t("about.stats.satisfaction"),
-      icon: Heart,
+      label: "Comprometimento com resultados",
+      icon: Medal,
     },
     { number: 1000, suffix: "+", label: t("about.stats.coffee"), icon: Coffee },
   ];
