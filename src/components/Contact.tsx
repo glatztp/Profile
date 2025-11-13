@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
+import colors from "../utils/colors";
+import Globe, { cityCoordinates } from "./Globe";
 import {
   PaperPlaneTilt,
   MapPin,
@@ -11,17 +13,6 @@ import {
   LinkedinLogo,
   Check,
 } from "phosphor-react";
-
-const colors = {
-  black: "#0a0908",
-  gunmetal: "#22333b",
-  almond: "#eae0d5",
-  khaki: "#c6ac8f",
-  walnut_brown: "#5e503f",
-  cyan: "#22d3ee",
-  emerald: "#10b981",
-  greenPulse: "#4ade80",
-};
 
 export function Contact() {
   const { t } = useLanguage();
@@ -79,12 +70,6 @@ export function Contact() {
       href: "mailto:gabrielfellipeglatz@gmail.com",
     },
     {
-      icon: Phone,
-      label: t("contact.info.phone"),
-      value: "+55 (47) 99926-2337",
-      href: "tel:+5547999262337",
-    },
-    {
       icon: MapPin,
       label: t("contact.info.location"),
       value: "Santa Catarina, Brazil",
@@ -97,14 +82,54 @@ export function Contact() {
       icon: GithubLogo,
       label: "GitHub",
       href: "https://github.com/glatztp",
-      color: "hover:text-" + colors.walnut_brown,
     },
     {
       icon: LinkedinLogo,
       label: "LinkedIn",
       href: "https://linkedin.com/in/gabriel-glatz",
-      color: "hover:text-" + colors.khaki,
     },
+  ];
+
+  // Lista de cidades que o globo deve rotacionar
+  const rotateCitiesList = [
+    "sao paulo",
+    "rio de janeiro",
+    "brazil",
+    "new york",
+    "london",
+    "paris",
+    "tokyo",
+    "sydney",
+    "mexico city",
+    "singapore",
+    "lisbon",
+    "cairo",
+    "bangkok",
+  ];
+
+  const hexToRgbArray = (hex: string): [number, number, number] => {
+    const sanitized = hex.replace("#", "").slice(0, 6);
+    const r = parseInt(sanitized.substring(0, 2), 16) / 255;
+    const g = parseInt(sanitized.substring(2, 4), 16) / 255;
+    const b = parseInt(sanitized.substring(4, 6), 16) / 255;
+    return [Number(r.toFixed(4)), Number(g.toFixed(4)), Number(b.toFixed(4))];
+  };
+
+  const baseColorArray = hexToRgbArray(colors.gunmetal);
+  const markerColorArray = hexToRgbArray(colors.cyan);
+  const glowColorArray = hexToRgbArray(colors.khaki);
+
+  const rotateMarkers = rotateCitiesList
+    .map((city) => {
+      const coords = cityCoordinates[city.toLowerCase()];
+      if (!coords) return null;
+      return { location: coords as [number, number], size: 0.035 };
+    })
+    .filter(Boolean) as { location: [number, number]; size: number }[];
+
+    const markers: { location: [number, number]; size: number }[] = [
+      { location: ([-27.2423, -50.2189] as unknown) as [number, number], size: 0.05 },
+      ...rotateMarkers,
   ];
 
   return (
@@ -121,17 +146,6 @@ export function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span
-            className="inline-block px-4 py-2 rounded-full border text-sm font-medium mb-4"
-            style={{
-              background: `linear-gradient(90deg, ${colors.khaki}33, ${colors.walnut_brown}33)`,
-              borderColor: colors.khaki + "66",
-              color: colors.khaki,
-              userSelect: "none",
-            }}
-          >
-            {t("contact.subtitle")}
-          </span>
           <h2
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{ color: colors.almond }}
@@ -152,6 +166,8 @@ export function Contact() {
             {t("contact.description")}
           </p>
         </motion.div>
+
+        {/* Globe moved into the Contact Info column so it displays alongside contact details */}
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
@@ -320,7 +336,6 @@ export function Contact() {
               </div>
             </div>
           </motion.div>
-
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
@@ -343,63 +358,95 @@ export function Contact() {
                 {t("contact.info.description")}
               </p>
 
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => {
-                  const IconComponent = info.icon;
-                  return (
-                    <motion.a
-                      key={index}
-                      href={info.href}
-                      target={info.href.startsWith("http") ? "_blank" : "_self"}
-                      rel={
-                        info.href.startsWith("http")
-                          ? "noopener noreferrer"
-                          : ""
-                      }
-                      whileHover={{ x: 5 }}
-                      className="flex items-center gap-4 group"
-                    >
-                      <div
-                        className="p-3 rounded-lg border transition-all"
-                        style={{
-                          backgroundColor: colors.gunmetal + "bb",
-                          borderColor: colors.walnut_brown + "80",
-                        }}
-                      >
-                        <IconComponent
-                          size={24}
-                          style={{ color: colors.khaki }}
-                        />
-                      </div>
-                      <div>
-                        <p
-                          className="text-sm"
-                          style={{ color: colors.almond + "aa" }}
-                        >
-                          {info.label}
-                        </p>
-                        <p
-                          className="font-medium transition-colors"
-                          style={{ color: colors.almond }}
-                        >
-                          {info.value}
-                        </p>
-                      </div>
-                    </motion.a>
-                  );
-                })}
+              <div className="mb-8 flex justify-center">
+                <Globe
+                  baseColor={baseColorArray}
+                  markerColor={markerColorArray}
+                  glowColor={glowColorArray}
+                  markers={markers}
+                  scale={1}
+                  rotateToLocation={"brazil"}
+                  autoRotate={true}
+                  rotateCities={rotateCitiesList}
+                  rotationSpeed={4000}
+                  className="w-full max-w-[420px] aspect-square"
+                />
               </div>
             </div>
-
-            {/* Social Links */}
+          </motion.div>
+          <div className="relative">
+            <div className="absolute inset-0 rounded-xl blur-sm" style={{}} />
+            <div
+              className="relative rounded-xl p-6 border"
+              style={{
+                backgroundColor: colors.gunmetal + "bb",
+                borderColor: colors.walnut_brown + "80",
+                backdropFilter: "blur(6px)",
+              }}
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  className="w-3 h-3 rounded-full animate-pulse"
+                  style={{ backgroundColor: colors.greenPulse }}
+                />
+                <h4 style={{ color: colors.almond, fontWeight: 600 }}>
+                  {t("contact.availability.title")}
+                </h4>
+              </div>
+              <p style={{ color: colors.almond + "cc", fontSize: "0.875rem" }}>
+                {t("contact.availability.description")}
+              </p>
+            </div>
+          </div>{" "}
+          <div className="flex justify-between  gap-12 lg:gap-20">
+            <div className="space-y-6">
+              {contactInfo.map((info, index) => {
+                const IconComponent = info.icon;
+                return (
+                  <motion.a
+                    key={index}
+                    href={info.href}
+                    target={info.href.startsWith("http") ? "_blank" : "_self"}
+                    rel={
+                      info.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    whileHover={{ x: 5 }}
+                    className="flex items-center gap-4 group"
+                  >
+                    <div
+                      className="p-3 rounded-lg border transition-all"
+                      style={{
+                        backgroundColor: colors.gunmetal + "bb",
+                        borderColor: colors.walnut_brown + "80",
+                      }}
+                    >
+                      <IconComponent
+                        size={24}
+                        style={{ color: colors.khaki }}
+                      />
+                    </div>
+                    <div>
+                      <p
+                        className="text-sm"
+                        style={{ color: colors.almond + "aa" }}
+                      >
+                        {info.label}
+                      </p>
+                      <p
+                        className="font-medium transition-colors"
+                        style={{ color: colors.almond }}
+                      >
+                        {info.value}
+                      </p>
+                    </div>
+                  </motion.a>
+                );
+              })}
+            </div>
             <div>
-              <h4
-                className="text-xl font-bold mb-4"
-                style={{ color: colors.almond }}
-              >
-                {t("footer.followMe")}
-              </h4>
-              <div className="flex gap-4">
+              <div className="flex gap-6 flex-col">
                 {socialLinks.map((social, index) => {
                   const IconComponent = social.icon;
                   return (
@@ -422,40 +469,8 @@ export function Contact() {
                 })}
               </div>
             </div>
-
             {/* Availability */}
-            <div className="relative">
-              <div
-                className="absolute inset-0 rounded-xl blur-sm"
-                style={{
-                  background: `linear-gradient(90deg, ${colors.khaki}22, ${colors.walnut_brown}22)`,
-                }}
-              />
-              <div
-                className="relative rounded-xl p-6 border"
-                style={{
-                  backgroundColor: colors.gunmetal + "bb",
-                  borderColor: colors.walnut_brown + "80",
-                  backdropFilter: "blur(6px)",
-                }}
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div
-                    className="w-3 h-3 rounded-full animate-pulse"
-                    style={{ backgroundColor: colors.greenPulse }}
-                  />
-                  <h4 style={{ color: colors.almond, fontWeight: 600 }}>
-                    {t("contact.availability.title")}
-                  </h4>
-                </div>
-                <p
-                  style={{ color: colors.almond + "cc", fontSize: "0.875rem" }}
-                >
-                  {t("contact.availability.description")}
-                </p>
-              </div>
-            </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

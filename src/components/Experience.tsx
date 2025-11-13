@@ -16,6 +16,23 @@ export function Experience() {
 
   const experiences = [
     {
+      id: 2,
+      title: t("experience.jobs.malwee_jr.title"),
+      company: t("experience.jobs.malwee_jr.company"),
+      location: t("experience.jobs.malwee_jr.location"),
+      period: t("experience.jobs.malwee_jr.period"),
+      type: t("experience.jobs.malwee_jr.type"),
+      description: t("experience.jobs.malwee_jr.description"),
+      achievements: [
+        t("experience.jobs.malwee_jr.achievements.0"),
+        t("experience.jobs.malwee_jr.achievements.1"),
+        t("experience.jobs.malwee_jr.achievements.2"),
+      ],
+      technologies: ["React", "TypeScript", "Node.js", "SQL"],
+      current: true,
+      icon: Code,
+    },
+    {
       id: 1,
       title: t("experience.jobs.malwee.title"),
       company: t("experience.jobs.malwee.company"),
@@ -29,7 +46,7 @@ export function Experience() {
         t("experience.jobs.malwee.achievements.2"),
       ],
       technologies: ["React", "Tailwind CSS", "TypeScript", "Node.js", "SQL"],
-      current: true,
+      current: false,
       icon: Code,
     },
     {

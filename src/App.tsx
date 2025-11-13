@@ -2,9 +2,7 @@ import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Portfolio } from "./components/Portfolio";
-import { Skills } from "./components/Skills";
 import { Experience } from "./components/Experience";
-import { Contact } from "./components/Contact";
 import Footer from "./components/Footer";
 import FaultyTerminal from "./components/animations/FaultyTerminal";
 import LoadingScreen from "./components/animations/LoadingScreen";
@@ -16,6 +14,9 @@ import {
   staggerContainer,
 } from "./utils/animations";
 import { useState, useEffect } from "react";
+import Skills from "./components/Skills";
+import { Contact } from "./components/Contact";
+import Globe from "./components/Globe";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -106,6 +107,7 @@ function App() {
                 <Portfolio />
                 <Experience />
                 <Contact />
+              
               </main>
               <Footer />
             </motion.div>

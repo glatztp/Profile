@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, GithubLogo, LinkedinLogo } from "phosphor-react";
 import SplitText from "./animations/SplitText";
+import TextHighlighter from "./animations/TextHighlighter";
 import { useLanguage } from "../contexts/LanguageContext";
 import {
   fadeInUp,
@@ -37,18 +38,28 @@ export function Hero() {
           className="block text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-heading font-corporate-extrabold mb-3 sm:mb-4 md:mb-6 leading-[0.9] sm:leading-tight split-text tracking-tight-corporate"
           variants={fadeInUp}
         >
-          <SplitText
-            text={t("hero.name")}
-            delay={100}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-          />
+          <TextHighlighter
+            highlightColor="#c6ac8f"
+            highlightOpacity={0.9}
+            animationDuration={1.2}
+            animationDelay={0.15}
+            strokeWidth={5}
+            type="wavy"
+            triggerOnView
+          >
+            <SplitText
+              text={t("hero.name")}
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
+          </TextHighlighter>
         </motion.span>
 
         <motion.span

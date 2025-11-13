@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@react-spring/web": "^10.0.3",
+    "cobe": "^0.6.5",
     "framer-motion": "^12.19.2",
     "gsap": "^3.13.0",
     "ogl": "^1.0.11",

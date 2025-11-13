@@ -25,7 +25,7 @@ const translations = {
     // Hero
     "hero.greeting": "Olá, eu sou",
     "hero.name": "Gabriel Glatz",
-    "hero.title": "Desenvolvedor de Software / Designer UI/UX",
+    "hero.title": "Desenvolvedor de Software",
     "hero.description":
       "Criando experiências digitais excepcionais com código limpo e design centrado no usuário.",
     "hero.cta": "Vamos Conversar",
@@ -102,6 +102,20 @@ const translations = {
     "experience.jobs.malwee.type": "Meio Periodo",
     "experience.jobs.malwee.description":
       "Desenvolvimento de aplicações web modernas e sistemas internos utilizando tecnologias atuais como React, TypeScript e Node.js.",
+    // Junior Role (new card)
+    "experience.jobs.malwee_jr.title": "Desenvolvedor de Sistemas Jr",
+    "experience.jobs.malwee_jr.company": "Grupo Malwee",
+    "experience.jobs.malwee_jr.location": "Jaraguá do Sul, SC",
+    "experience.jobs.malwee_jr.period": "2025 - Presente",
+    "experience.jobs.malwee_jr.type": "Tempo Integral",
+    "experience.jobs.malwee_jr.description":
+      "Atuação como Desenvolvedor de Sistemas Jr, contribuindo para aplicações internas e melhorias em plataformas web usando React, TypeScript e Node.js.",
+    "experience.jobs.malwee_jr.achievements.0":
+      "Onboarding técnico e contribuição para features internas",
+    "experience.jobs.malwee_jr.achievements.1":
+      "Participação em revisão de código e correções de bugs",
+    "experience.jobs.malwee_jr.achievements.2":
+      "Aprimoramento de processos de deploy e integração contínua",
     "experience.jobs.malwee.achievements.0":
       "Implementação de interfaces responsivas com React e Tailwind CSS",
     "experience.jobs.malwee.achievements.1":
@@ -149,7 +163,6 @@ const translations = {
     "contact.info.description":
       "Pronto para começar seu próximo projeto? Sinta-se à vontade para entrar em contato através de qualquer um desses canais. Normalmente respondo em até 24 horas.",
     "contact.info.email": "Email",
-    "contact.info.phone": "Telefone",
     "contact.info.location": "Localização",
     "contact.availability.title": "Disponível para novos projetos",
     "contact.availability.description":
@@ -194,7 +207,7 @@ const translations = {
     // Hero
     "hero.greeting": "Hello, I am",
     "hero.name": "Gabriel Glatz",
-    "hero.title": "Software Developer / UI/UX Designer",
+    "hero.title": "Software Developer",
     "hero.description":
       "Creating exceptional digital experiences with clean code and user-centered design.",
     "hero.cta": "Let's Talk",
@@ -270,6 +283,20 @@ const translations = {
     "experience.jobs.malwee.type": "Half time",
     "experience.jobs.malwee.description":
       "Development of modern web applications and internal systems using current technologies like React, TypeScript and Node.js.",
+    // Junior Role (new card)
+    "experience.jobs.malwee_jr.title": "Junior Systems Developer",
+    "experience.jobs.malwee_jr.company": "Grupo Malwee",
+    "experience.jobs.malwee_jr.location": "Jaraguá do Sul, SC",
+    "experience.jobs.malwee_jr.period": "2025 - Present",
+    "experience.jobs.malwee_jr.type": "Full time",
+    "experience.jobs.malwee_jr.description":
+      "Working as a Junior Systems Developer, contributing to internal applications and improvements on web platforms using React, TypeScript and Node.js.",
+    "experience.jobs.malwee_jr.achievements.0":
+      "Technical onboarding and contribution to internal features",
+    "experience.jobs.malwee_jr.achievements.1":
+      "Participation in code reviews and bug fixes",
+    "experience.jobs.malwee_jr.achievements.2":
+      "Improvements in deployment and CI processes",
     "experience.jobs.malwee.achievements.0":
       "Implementation of responsive interfaces with React and Tailwind CSS",
     "experience.jobs.malwee.achievements.1":
@@ -316,7 +343,6 @@ const translations = {
     "contact.info.description":
       "Ready to start your next project? Feel free to reach out through any of these channels. I typically respond within 24 hours.",
     "contact.info.email": "Email",
-    "contact.info.phone": "Phone",
     "contact.info.location": "Location",
     "contact.availability.title": "Available for new projects",
     "contact.availability.description":
