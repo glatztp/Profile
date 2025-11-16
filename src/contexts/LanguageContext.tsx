@@ -98,7 +98,7 @@ const translations = {
     "experience.jobs.malwee.title": "Desenvolvedor de Software",
     "experience.jobs.malwee.company": "Grupo Malwee",
     "experience.jobs.malwee.location": "Jaraguá do Sul, SC",
-    "experience.jobs.malwee.period": "2024 - Presente",
+    "experience.jobs.malwee.period": "2024 - 2025",
     "experience.jobs.malwee.type": "Meio Periodo",
     "experience.jobs.malwee.description":
       "Desenvolvimento de aplicações web modernas e sistemas internos utilizando tecnologias atuais como React, TypeScript e Node.js.",
@@ -142,7 +142,7 @@ const translations = {
       "Técnico em Desenvolvimento de Sistemas",
     "experience.education.senai.institution": "SENAI - Jaraguá do Sul",
     "experience.education.senai.location": "Jaraguá do Sul, SC",
-    "experience.education.senai.period": "2024 - Presente",
+    "experience.education.senai.period": "2024 - 2025",
     "experience.education.senai.type": "Técnico",
     "experience.education.senai.description":
       "Formação técnica completa em desenvolvimento de sistemas, cobrindo desde fundamentos de programação até desenvolvimento de aplicações web e mobile.",
@@ -276,10 +276,10 @@ const translations = {
       "Always expanding my knowledge through online courses, certifications, and hands-on projects. Currently focusing on advanced React patterns, cloud technologies, and modern development practices.",
 
     // Experience Jobs
-    "experience.jobs.malwee.title": "Software Developer",
+    "experience.jobs.malwee.title": "Software Developer ",
     "experience.jobs.malwee.company": "Grupo Malwee",
     "experience.jobs.malwee.location": "Jaraguá do Sul, SC",
-    "experience.jobs.malwee.period": "2024 - Present",
+    "experience.jobs.malwee.period": "2024 - 2025",
     "experience.jobs.malwee.type": "Half time",
     "experience.jobs.malwee.description":
       "Development of modern web applications and internal systems using current technologies like React, TypeScript and Node.js.",
@@ -322,7 +322,7 @@ const translations = {
     "experience.education.senai.title": "Systems Development Technician",
     "experience.education.senai.institution": "SENAI - Jaraguá do Sul",
     "experience.education.senai.location": "Jaraguá do Sul, SC",
-    "experience.education.senai.period": "2024 - Present",
+    "experience.education.senai.period": "2024 - 2025",
     "experience.education.senai.type": "Technical",
     "experience.education.senai.description":
       "Complete technical training in systems development, covering from programming fundamentals to web and mobile application development.",
